@@ -1,527 +1,988 @@
 <!DOCTYPE html>
-<html lang="en">
+<!--[if IE 7]>
+<html class="ie ie7 no-js" lang="en-US">
+<![endif]-->
+<!--[if IE 8]>
+<html class="ie ie8 no-js" lang="en-US">
+<![endif]-->
+<!--[if !(IE 7) | !(IE 8)  ]><!-->
+<html lang="en" class="no-js">
 
 <head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-	<!-- CSS -->
-	<link rel="stylesheet" href="<?= base_url('assets/css/bootstrap-reboot.min.css') ?>">
-	<link rel="stylesheet" href="<?= base_url('assets/css/bootstrap-grid.min.css') ?>">
-	<link rel="stylesheet" href="<?= base_url('assets/css/owl.carousel.min.css') ?>">
-	<link rel="stylesheet" href="<?= base_url('assets/css/slider-radio.css') ?>">
-	<link rel="stylesheet" href="<?= base_url('assets/css/select2.min.css') ?>">
-	<link rel="stylesheet" href="<?= base_url('assets/css/magnific-popup.css') ?>">
-	<link rel="stylesheet" href="<?= base_url('assets/css/plyr.css') ?>">
-	<link rel="stylesheet" href="<?= base_url('assets/css/main.css') ?>">
-
-	<!-- Favicons -->
-	<link rel="icon" type="image/png" href="<?= base_url('assets/icon/favicon-32x32.png') ?>" s>
-	<link rel="apple-touch-icon" href="<?= base_url('assets/icon/favicon-32x32.png') ?>">
-
+	<!-- Basic need -->
+	<title><?= $title; ?></title>
+	<meta charset="UTF-8">
 	<meta name="description" content="">
 	<meta name="keywords" content="">
-	<meta name="author" content="Luqman Aly RazakS">
-	<title>PulensFilm - Movies Streaming </title>
+	<meta name="author" content="">
+	<link rel="profile" href="#">
+
+	<!--Google Font-->
+	<link rel="stylesheet" href='css?family=Dosis:400,700,500|Nunito:300,400,600'>
+	<!-- Mobile specific meta -->
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="format-detection" content="telephone-no">
+
+	<!-- CSS files -->
+	<link rel="stylesheet" href="<?= base_url('assets/css/plugins.css?v=' . filemtime(FCPATH . 'assets/css/plugins.css')); ?>">
+	<link rel="stylesheet" href="<?= base_url('assets/css/style.css?v=' . filemtime(FCPATH . 'assets/css/style.css')); ?>">
 
 </head>
 
 <body>
-	<!-- Navbar -->
-	<?php $this->load->view('header'); ?>
-	<!-- end header -->
+	<!--preloading-->
+	<div id="preloader">
+		<!-- <img class="logo" src="<?= base_url('assets/images/logo-update2.png') ?>" alt="" width="300" height="100"> -->
+		<div id="status">
+			<span></span>
+			<span></span>
+		</div>
+	</div>
+	<!--end of preloading-->
+	<!--login form popup-->
+	<div class="login-wrapper" id="login-content">
+		<div class="login-content">
+			<a href="#" class="close">x</a>
+			<h3>Login</h3>
+			<form method="post" action="login.php">
+				<div class="row">
+					<label for="username">
+						Username:
+						<input type="text" name="username" id="username" placeholder="Hugh Jackman" pattern="^[a-zA-Z][a-zA-Z0-9-_\.]{8,20}$" required="required">
+					</label>
+				</div>
 
-	<!-- Beranda -->
-	<div class="home home--title">
-		<div class="container">
+				<div class="row">
+					<label for="password">
+						Password:
+						<input type="password" name="password" id="password" placeholder="******" pattern="(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" required="required">
+					</label>
+				</div>
+				<div class="row">
+					<div class="remember">
+						<div>
+							<input type="checkbox" name="remember" value="Remember me"><span>Remember me</span>
+						</div>
+						<a href="#">Forget password ?</a>
+					</div>
+				</div>
+				<div class="row">
+					<button type="submit">Login</button>
+				</div>
+			</form>
 			<div class="row">
-				<div class="col-12">
-					<h1 class="home__title"><b>New Movies</b></h1>
+				<p>Or via social</p>
+				<div class="social-btn-2">
+					<a class="fb" href="#"><i class="ion-social-facebook"></i>Facebook</a>
+					<a class="tw" href="#"><i class="ion-social-twitter"></i>twitter</a>
 				</div>
 			</div>
 		</div>
+	</div>
+	<!--end of login form popup-->
+	<!--signup form popup-->
+	<div class="login-wrapper" id="signup-content">
+		<div class="login-content">
+			<a href="#" class="close">x</a>
+			<h3>sign up</h3>
+			<form method="post" action="signup.php">
+				<div class="row">
+					<label for="username-2">
+						Username:
+						<input type="text" name="username" id="username-2" placeholder="Hugh Jackman" pattern="^[a-zA-Z][a-zA-Z0-9-_\.]{8,20}$" required="required">
+					</label>
+				</div>
 
-		<!-- Trending -->
+				<div class="row">
+					<label for="email-2">
+						your email:
+						<input type="password" name="email" id="email-2" placeholder="" pattern="(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" required="required">
+					</label>
+				</div>
+				<div class="row">
+					<label for="password-2">
+						Password:
+						<input type="password" name="password" id="password-2" placeholder="" pattern="(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" required="required">
+					</label>
+				</div>
+				<div class="row">
+					<label for="repassword-2">
+						re-type Password:
+						<input type="password" name="password" id="repassword-2" placeholder="" pattern="(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" required="required">
+					</label>
+				</div>
+				<div class="row">
+					<button type="submit">sign up</button>
+				</div>
+			</form>
+		</div>
+	</div>
+	<!--end of signup form popup-->
 
-		<div class="home__carousel owl-carousel" id="flixtv-hero">
+	<div class="slider movie-items">
+		<div class="container">
+			<div class="row">
+				<div class="social-link">
+					<p>Follow us: </p>
+					<a href="#"><i class="ion-social-facebook"></i></a>
+					<a href="#"><i class="ion-social-twitter"></i></a>
+					<a href="#"><i class="ion-social-googleplus"></i></a>
+					<a href="#"><i class="ion-social-youtube"></i></a>
+				</div>
 
-			<?php
-			foreach ($new_movies->result() as $row) {
-			?>
-				<div class="home__card">
-					<a href="<?php echo base_url(); ?>details/<?php echo $row->id; ?>">
-						<img src="<?php echo base_url() . 'assets/movies/' . $row->picture; ?>" height="375px" width="250px" alt="">
-					</a>
-					<div>
-						<h2><?php echo ucwords($row->title); ?></h2>
-						<ul>
-							<?php
-							$this->db->where('movie_id', $row->id);
-							$this->db->join('categories', 'categories.id = movie_categories.category_id', 'left');
-							$cat = $this->db->get('movie_categories')->result();
+				<div class="slick-multiItemSlider">
+					<?php if (!empty($new_movies)): ?>
+						<?php foreach ($new_movies as $movie): ?>
+							<div class="movie-item">
+								<div class="mv-img">
+									<a href="<?= base_url('beranda/details/' . $movie->id) ?>">
+										<img
+											src="<?= base_url('assets/movies/' . $movie->picture) ?>"
+											alt="<?= html_escape($movie->title) ?>"
+											width="250" height="400">
+									</a>
+								</div>
+								<div class="title-in">
+									<div class="cate">
+										<span class="blue">
+											<a href="<?= base_url('beranda/categories/' . $movie->category_id) ?>">
+												<?= isset($movie->category_name) ? ucfirst($movie->category_name) : 'Movie' ?>
+											</a>
+										</span>
+									</div>
+									<h6>
+										<a href="<?= base_url('beranda/details/' . $movie->id) ?>">
+											<?= html_escape($movie->title) ?>
+										</a>
+									</h6>
+									<p>
+										<i class="ion-android-star"></i>
+										<span><?= number_format($movie->rating, 1) ?></span> /10
+									</p>
+								</div>
+							</div>
+						<?php endforeach; ?>
+					<?php else: ?>
+						<p class="text-center text-muted">Belum ada film baru tahun ini.</p>
+					<?php endif; ?>
+				</div>
+			</div>
+		</div>
+	</div>
 
-							foreach ($cat as $val_cat) {
-								echo "<li>" . $val_cat->name . "</li>";
-							}
-							?>
-							<li><?php echo $row->year; ?></li>
+	<div class="movie-items">
+		<div class="container">
+			<div class="row ipad-width">
+				<div class="col-md-8">
+					<div class="title-hd">
+						<h2>in theater</h2>
+						<a href="#" class="viewall">View all <i class="ion-ios-arrow-right"></i></a>
+					</div>
 
+					<div class="tabs">
+						<ul class="tab-links">
+							<li class="active"><a href="#tab1">#Popular</a></li>
+							<li><a href="#tab2">#Coming soon</a></li>
+							<li><a href="#tab3">#Top rated</a></li>
+							<li><a href="#tab4">#Most reviewed</a></li>
 						</ul>
+
+						<div class="tab-content">
+							<!-- Popular -->
+							<div id="tab1" class="tab active">
+								<div class="row">
+									<div class="slick-multiItem">
+										<?php foreach ($popular_movies as $movie): ?>
+											<div class="slide-it">
+												<div class="movie-item">
+													<div class="mv-img">
+														<img src="<?= base_url('assets/movies/' . $movie->picture) ?>" alt="<?= $movie->title ?>" width="185" height="284">
+													</div>
+													<div class="hvr-inner">
+														<a href="<?= site_url('beranda/details/' . $movie->id) ?>"> Read more <i class="ion-android-arrow-dropright"></i> </a>
+													</div>
+													<div class="title-in">
+														<h6><a href="<?= site_url('beranda/details/' . $movie->id) ?>"><?= $movie->title ?></a></h6>
+														<p><i class="ion-android-star"></i><span><?= $movie->rating ?></span> /10</p>
+													</div>
+												</div>
+											</div>
+										<?php endforeach; ?>
+									</div>
+								</div>
+							</div>
+
+							<!-- Coming Soon -->
+							<div id="tab2" class="tab">
+								<div class="row">
+									<div class="slick-multiItem">
+
+										<?php foreach ($coming_soon as $movie): ?>
+
+											<div class="slide-it">
+												<div class="movie-item">
+													<div class="mv-img">
+														<img src="<?= base_url('assets/movies/' . $movie->picture) ?>"
+															alt="<?= $movie->title ?>" width="185" height="284">
+													</div>
+													<div class="hvr-inner">
+														<a href="<?= site_url('beranda/details/' . $movie->id) ?>">
+															Read more <i class="ion-android-arrow-dropright"></i>
+														</a>
+													</div>
+													<div class="title-in">
+														<h6><a href="<?= site_url('beranda/details/' . $movie->id) ?>">
+																<?= $movie->title ?>
+															</a></h6>
+														<p><i class="ion-android-star"></i>
+															<span><?= $movie->rating ?></span> /10
+														</p>
+														<small class="text-muted">
+															Release: <?= date('d M Y', strtotime($movie->release_date)) ?>
+														</small>
+													</div>
+												</div>
+											</div>
+										<?php endforeach; ?>
+									</div>
+								</div>
+							</div>
+
+							<!-- Top Rated -->
+							<div id="tab3" class="tab">
+								<div class="row">
+									<div class="slick-multiItem">
+										<?php foreach ($top_rated as $movie): ?>
+											<div class="slide-it">
+												<div class="movie-item">
+													<div class="mv-img">
+														<img src="<?= base_url('assets/movies/' . $movie->picture) ?>" alt="<?= $movie->title ?>" width="185" height="284">
+													</div>
+													<div class="hvr-inner">
+														<a href="<?= site_url('beranda/details/' . $movie->id) ?>"> Read more <i class="ion-android-arrow-dropright"></i> </a>
+													</div>
+													<div class="title-in">
+														<h6><a href="<?= site_url('beranda/details/' . $movie->id) ?>"><?= $movie->title ?></a></h6>
+														<p><i class="ion-android-star"></i><span><?= $movie->rating ?></span> /10</p>
+													</div>
+												</div>
+											</div>
+										<?php endforeach; ?>
+									</div>
+								</div>
+							</div>
+
+							<!-- Most Reviewed -->
+							<div id="tab4" class="tab">
+								<div class="row">
+									<div class="slick-multiItem">
+										<?php foreach ($most_reviewed as $movie): ?>
+											<div class="slide-it">
+												<div class="movie-item">
+													<div class="mv-img">
+														<img src="<?= base_url('assets/movies/' . $movie->picture) ?>" alt="<?= $movie->title ?>" width="185" height="284">
+													</div>
+													<div class="hvr-inner">
+														<a href="<?= site_url('beranda/details/' . $movie->id) ?>"> Read more <i class="ion-android-arrow-dropright"></i> </a>
+													</div>
+													<div class="title-in">
+														<h6><a href="<?= site_url('beranda/details/' . $movie->id) ?>"><?= $movie->title ?></a></h6>
+														<p><i class="ion-android-star"></i><span><?= $movie->rating ?></span> /10</p>
+													</div>
+												</div>
+											</div>
+										<?php endforeach; ?>
+									</div>
+								</div>
+							</div>
+						</div>
 					</div>
-					<button class="home__add" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-							<path d="M16,2H8A3,3,0,0,0,5,5V21a1,1,0,0,0,.5.87,1,1,0,0,0,1,0L12,18.69l5.5,3.18A1,1,0,0,0,18,22a1,1,0,0,0,.5-.13A1,1,0,0,0,19,21V5A3,3,0,0,0,16,2Zm1,17.27-4.5-2.6a1,1,0,0,0-1,0L7,19.27V5A1,1,0,0,1,8,4h8a1,1,0,0,1,1,1Z" />
-						</svg></button>
-					<span class="home__rating"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-							<path d="M22,9.67A1,1,0,0,0,21.14,9l-5.69-.83L12.9,3a1,1,0,0,0-1.8,0L8.55,8.16,2.86,9a1,1,0,0,0-.81.68,1,1,0,0,0,.25,1l4.13,4-1,5.68A1,1,0,0,0,6.9,21.44L12,18.77l5.1,2.67a.93.93,0,0,0,.46.12,1,1,0,0,0,.59-.19,1,1,0,0,0,.4-1l-1-5.68,4.13-4A1,1,0,0,0,22,9.67Zm-6.15,4a1,1,0,0,0-.29.88l.72,4.2-3.76-2a1.06,1.06,0,0,0-.94,0l-3.76,2,.72-4.2a1,1,0,0,0-.29-.88l-3-3,4.21-.61a1,1,0,0,0,.76-.55L12,5.7l1.88,3.82a1,1,0,0,0,.76.55l4.21.61Z" />
-						</svg><?php echo $row->rating; ?></span>
+
+					<div class="title-hd">
+						<h2>on tv</h2>
+						<a href="#" class="viewall">View all <i class="ion-ios-arrow-right"></i></a>
+					</div>
+					<div class="tabs">
+						<ul class="tab-links-2">
+							<li><a href="#tab21">#Popular</a></li>
+							<li class="active"><a href="#tab22"> #Coming soon</a></li>
+							<li><a href="#tab23"> #Top rated </a></li>
+							<li><a href="#tab24"> #Most reviewed</a></li>
+						</ul>
+						<div class="tab-content">
+							<div id="tab21" class="tab">
+								<div class="row">
+									<div class="slick-multiItem">
+										<div class="slide-it">
+											<div class="movie-item">
+												<div class="mv-img">
+													<img src="images/uploads/mv-item1.jpg" alt="" width="185" height="284">
+												</div>
+												<div class="hvr-inner">
+													<a href="moviesingle.html"> Read more <i class="ion-android-arrow-dropright"></i> </a>
+												</div>
+												<div class="title-in">
+													<h6><a href="#">Interstellar</a></h6>
+													<p><i class="ion-android-star"></i><span>7.4</span> /10</p>
+												</div>
+											</div>
+										</div>
+										<div class="slide-it">
+											<div class="movie-item">
+												<div class="mv-img">
+													<img src="images/uploads/mv-item2.jpg" alt="" width="185" height="284">
+												</div>
+												<div class="hvr-inner">
+													<a href="moviesingle.html"> Read more <i class="ion-android-arrow-dropright"></i> </a>
+												</div>
+												<div class="title-in">
+													<h6><a href="#">The revenant</a></h6>
+													<p><i class="ion-android-star"></i><span>7.4</span> /10</p>
+												</div>
+											</div>
+										</div>
+										<div class="slide-it">
+											<div class="movie-item">
+												<div class="mv-img">
+													<img src="images/uploads/mv-item3.jpg" alt="" width="185" height="284">
+												</div>
+												<div class="hvr-inner">
+													<a href="moviesingle.html"> Read more <i class="ion-android-arrow-dropright"></i> </a>
+												</div>
+												<div class="title-in">
+													<h6><a href="#">Die hard</a></h6>
+													<p><i class="ion-android-star"></i><span>7.4</span> /10</p>
+												</div>
+											</div>
+										</div>
+										<div class="slide-it">
+											<div class="movie-item">
+												<div class="mv-img">
+													<img src="images/uploads/mv-item4.jpg" alt="" width="185" height="284">
+												</div>
+												<div class="hvr-inner">
+													<a href="moviesingle.html"> Read more <i class="ion-android-arrow-dropright"></i> </a>
+												</div>
+												<div class="title-in">
+													<h6><a href="#">The walk</a></h6>
+													<p><i class="ion-android-star"></i><span>7.4</span> /10</p>
+												</div>
+											</div>
+										</div>
+										<div class="slide-it">
+											<div class="movie-item">
+												<div class="mv-img">
+													<img src="images/uploads/mv-item3.jpg" alt="" width="185" height="284">
+												</div>
+												<div class="hvr-inner">
+													<a href="moviesingle.html"> Read more <i class="ion-android-arrow-dropright"></i> </a>
+												</div>
+												<div class="title-in">
+													<h6><a href="#">Die hard</a></h6>
+													<p><i class="ion-android-star"></i><span>7.4</span> /10</p>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div id="tab22" class="tab active">
+								<div class="row">
+									<div class="slick-multiItem">
+										<div class="slide-it">
+											<div class="movie-item">
+												<div class="mv-img">
+													<img src="images/uploads/mv-item5.jpg" alt="" width="185" height="284">
+												</div>
+												<div class="hvr-inner">
+													<a href="moviesingle.html"> Read more <i class="ion-android-arrow-dropright"></i> </a>
+												</div>
+												<div class="title-in">
+													<h6><a href="#">Interstellar</a></h6>
+													<p><i class="ion-android-star"></i><span>7.4</span> /10</p>
+												</div>
+											</div>
+										</div>
+										<div class="slide-it">
+											<div class="movie-item">
+												<div class="mv-img">
+													<img src="images/uploads/mv-item6.jpg" alt="" width="185" height="284">
+												</div>
+												<div class="hvr-inner">
+													<a href="moviesingle.html"> Read more <i class="ion-android-arrow-dropright"></i> </a>
+												</div>
+												<div class="title-in">
+													<h6><a href="#">The revenant</a></h6>
+													<p><i class="ion-android-star"></i><span>7.4</span> /10</p>
+												</div>
+											</div>
+										</div>
+										<div class="slide-it">
+											<div class="movie-item">
+												<div class="mv-img">
+													<img src="images/uploads/mv-item7.jpg" alt="" width="185" height="284">
+												</div>
+												<div class="hvr-inner">
+													<a href="moviesingle.html"> Read more <i class="ion-android-arrow-dropright"></i> </a>
+												</div>
+												<div class="title-in">
+													<h6><a href="#">Die hard</a></h6>
+													<p><i class="ion-android-star"></i><span>7.4</span> /10</p>
+												</div>
+											</div>
+										</div>
+										<div class="slide-it">
+											<div class="movie-item">
+												<div class="mv-img">
+													<img src="images/uploads/mv-item8.jpg" alt="" width="185" height="284">
+												</div>
+												<div class="hvr-inner">
+													<a href="moviesingle.html"> Read more <i class="ion-android-arrow-dropright"></i> </a>
+												</div>
+												<div class="title-in">
+													<h6><a href="#">The walk</a></h6>
+													<p><i class="ion-android-star"></i><span>7.4</span> /10</p>
+												</div>
+											</div>
+										</div>
+										<div class="slide-it">
+											<div class="movie-item">
+												<div class="mv-img">
+													<img src="images/uploads/mv-item1.jpg" alt="" width="185" height="284">
+												</div>
+												<div class="hvr-inner">
+													<a href="moviesingle.html"> Read more <i class="ion-android-arrow-dropright"></i> </a>
+												</div>
+												<div class="title-in">
+													<h6><a href="#">Interstellar</a></h6>
+													<p><i class="ion-android-star"></i><span>7.4</span> /10</p>
+												</div>
+											</div>
+										</div>
+										<div class="slide-it">
+											<div class="movie-item">
+												<div class="mv-img">
+													<img src="images/uploads/mv-item2.jpg" alt="" width="185" height="284">
+												</div>
+												<div class="hvr-inner">
+													<a href="moviesingle.html"> Read more <i class="ion-android-arrow-dropright"></i> </a>
+												</div>
+												<div class="title-in">
+													<h6><a href="#">The revenant</a></h6>
+													<p><i class="ion-android-star"></i><span>7.4</span> /10</p>
+												</div>
+											</div>
+										</div>
+										<div class="slide-it">
+											<div class="movie-item">
+												<div class="mv-img">
+													<img src="images/uploads/mv-item3.jpg" alt="" width="185" height="284">
+												</div>
+												<div class="hvr-inner">
+													<a href="moviesingle.html"> Read more <i class="ion-android-arrow-dropright"></i> </a>
+												</div>
+												<div class="title-in">
+													<h6><a href="#">Die hard</a></h6>
+													<p><i class="ion-android-star"></i><span>7.4</span> /10</p>
+												</div>
+											</div>
+										</div>
+										<div class="slide-it">
+											<div class="movie-item">
+												<div class="mv-img">
+													<img src="images/uploads/mv-item4.jpg" alt="" width="185" height="284">
+												</div>
+												<div class="hvr-inner">
+													<a href="moviesingle.html"> Read more <i class="ion-android-arrow-dropright"></i> </a>
+												</div>
+												<div class="title-in">
+													<h6><a href="#">The walk</a></h6>
+													<p><i class="ion-android-star"></i><span>7.4</span> /10</p>
+												</div>
+											</div>
+										</div>
+										<div class="slide-it">
+											<div class="movie-item">
+												<div class="mv-img">
+													<img src="images/uploads/mv-item5.jpg" alt="" width="185" height="284">
+												</div>
+												<div class="hvr-inner">
+													<a href="moviesingle.html"> Read more <i class="ion-android-arrow-dropright"></i> </a>
+												</div>
+												<div class="title-in">
+													<h6><a href="#">Interstellar</a></h6>
+													<p><i class="ion-android-star"></i><span>7.4</span> /10</p>
+												</div>
+											</div>
+										</div>
+										<div class="slide-it">
+											<div class="movie-item">
+												<div class="mv-img">
+													<img src="images/uploads/mv-item6.jpg" alt="" width="185" height="284">
+												</div>
+												<div class="hvr-inner">
+													<a href="moviesingle.html"> Read more <i class="ion-android-arrow-dropright"></i> </a>
+												</div>
+												<div class="title-in">
+													<h6><a href="#">The revenant</a></h6>
+													<p><i class="ion-android-star"></i><span>7.4</span> /10</p>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div id="tab23" class="tab">
+								<div class="row">
+									<div class="slick-multiItem">
+										<div class="slide-it">
+											<div class="movie-item">
+												<div class="mv-img">
+													<img src="images/uploads/mv-item1.jpg" alt="" width="185" height="284">
+												</div>
+												<div class="hvr-inner">
+													<a href="moviesingle.html"> Read more <i class="ion-android-arrow-dropright"></i> </a>
+												</div>
+												<div class="title-in">
+													<h6><a href="#">Interstellar</a></h6>
+													<p><i class="ion-android-star"></i><span>7.4</span> /10</p>
+												</div>
+											</div>
+										</div>
+										<div class="slide-it">
+											<div class="movie-item">
+												<div class="mv-img">
+													<img src="images/uploads/mv-item2.jpg" alt="" width="185" height="284">
+												</div>
+												<div class="hvr-inner">
+													<a href="moviesingle.html"> Read more <i class="ion-android-arrow-dropright"></i> </a>
+												</div>
+												<div class="title-in">
+													<h6><a href="#">The revenant</a></h6>
+													<p><i class="ion-android-star"></i><span>7.4</span> /10</p>
+												</div>
+											</div>
+										</div>
+										<div class="slide-it">
+											<div class="movie-item">
+												<div class="mv-img">
+													<img src="images/uploads/mv-item3.jpg" alt="" width="185" height="284">
+												</div>
+												<div class="hvr-inner">
+													<a href="moviesingle.html"> Read more <i class="ion-android-arrow-dropright"></i> </a>
+												</div>
+												<div class="title-in">
+													<h6><a href="#">Die hard</a></h6>
+													<p><i class="ion-android-star"></i><span>7.4</span> /10</p>
+												</div>
+											</div>
+										</div>
+										<div class="slide-it">
+											<div class="movie-item">
+												<div class="mv-img">
+													<img src="images/uploads/mv-item4.jpg" alt="" width="185" height="284">
+												</div>
+												<div class="hvr-inner">
+													<a href="moviesingle.html"> Read more <i class="ion-android-arrow-dropright"></i> </a>
+												</div>
+												<div class="title-in">
+													<h6><a href="#">The walk</a></h6>
+													<p><i class="ion-android-star"></i><span>7.4</span> /10</p>
+												</div>
+											</div>
+										</div>
+										<div class="slide-it">
+											<div class="movie-item">
+												<div class="mv-img">
+													<img src="images/uploads/mv-item5.jpg" alt="" width="185" height="284">
+												</div>
+												<div class="hvr-inner">
+													<a href="moviesingle.html"> Read more <i class="ion-android-arrow-dropright"></i> </a>
+												</div>
+												<div class="title-in">
+													<h6><a href="#">Interstellar</a></h6>
+													<p><i class="ion-android-star"></i><span>7.4</span> /10</p>
+												</div>
+											</div>
+										</div>
+										<div class="slide-it">
+											<div class="movie-item">
+												<div class="mv-img">
+													<img src="images/uploads/mv-item6.jpg" alt="" width="185" height="284">
+												</div>
+												<div class="hvr-inner">
+													<a href="moviesingle.html"> Read more <i class="ion-android-arrow-dropright"></i> </a>
+												</div>
+												<div class="title-in">
+													<h6><a href="#">The revenant</a></h6>
+													<p><i class="ion-android-star"></i><span>7.4</span> /10</p>
+												</div>
+											</div>
+										</div>
+										<div class="slide-it">
+											<div class="movie-item">
+												<div class="mv-img">
+													<img src="images/uploads/mv-item7.jpg" alt="" width="185" height="284">
+												</div>
+												<div class="hvr-inner">
+													<a href="moviesingle.html"> Read more <i class="ion-android-arrow-dropright"></i> </a>
+												</div>
+												<div class="title-in">
+													<h6><a href="#">Die hard</a></h6>
+													<p><i class="ion-android-star"></i><span>7.4</span> /10</p>
+												</div>
+											</div>
+										</div>
+										<div class="slide-it">
+											<div class="movie-item">
+												<div class="mv-img">
+													<img src="images/uploads/mv-item8.jpg" alt="" width="185" height="284">
+												</div>
+												<div class="hvr-inner">
+													<a href="moviesingle.html"> Read more <i class="ion-android-arrow-dropright"></i> </a>
+												</div>
+												<div class="title-in">
+													<h6><a href="#">The walk</a></h6>
+													<p><i class="ion-android-star"></i><span>7.4</span> /10</p>
+												</div>
+											</div>
+										</div>
+										<div class="slide-it">
+											<div class="movie-item">
+												<div class="mv-img">
+													<img src="images/uploads/mv-item3.jpg" alt="" width="185" height="284">
+												</div>
+												<div class="hvr-inner">
+													<a href="moviesingle.html"> Read more <i class="ion-android-arrow-dropright"></i> </a>
+												</div>
+												<div class="title-in">
+													<h6><a href="#">Die hard</a></h6>
+													<p><i class="ion-android-star"></i><span>7.4</span> /10</p>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div id="tab24" class="tab">
+								<div class="row">
+									<div class="slick-multiItem">
+										<div class="slide-it">
+											<div class="movie-item">
+												<div class="mv-img">
+													<img src="images/uploads/mv-item5.jpg" alt="" width="185" height="284">
+												</div>
+												<div class="hvr-inner">
+													<a href="moviesingle.html"> Read more <i class="ion-android-arrow-dropright"></i> </a>
+												</div>
+												<div class="title-in">
+													<h6><a href="#">Interstellar</a></h6>
+													<p><i class="ion-android-star"></i><span>7.4</span> /10</p>
+												</div>
+											</div>
+										</div>
+										<div class="slide-it">
+											<div class="movie-item">
+												<div class="mv-img">
+													<img src="images/uploads/mv-item6.jpg" alt="" width="185" height="284">
+												</div>
+												<div class="hvr-inner">
+													<a href="moviesingle.html"> Read more <i class="ion-android-arrow-dropright"></i> </a>
+												</div>
+												<div class="title-in">
+													<h6><a href="#">The revenant</a></h6>
+													<p><i class="ion-android-star"></i><span>7.4</span> /10</p>
+												</div>
+											</div>
+										</div>
+										<div class="slide-it">
+											<div class="movie-item">
+												<div class="mv-img">
+													<img src="images/uploads/mv-item7.jpg" alt="" width="185" height="284">
+												</div>
+												<div class="hvr-inner">
+													<a href="moviesingle.html"> Read more <i class="ion-android-arrow-dropright"></i> </a>
+												</div>
+												<div class="title-in">
+													<h6><a href="#">Die hard</a></h6>
+													<p><i class="ion-android-star"></i><span>7.4</span> /10</p>
+												</div>
+											</div>
+										</div>
+										<div class="slide-it">
+											<div class="movie-item">
+												<div class="mv-img">
+													<img src="images/uploads/mv-item8.jpg" alt="" width="185" height="284">
+												</div>
+												<div class="hvr-inner">
+													<a href="moviesingle.html"> Read more <i class="ion-android-arrow-dropright"></i> </a>
+												</div>
+												<div class="title-in">
+													<h6><a href="#">The walk</a></h6>
+													<p><i class="ion-android-star"></i><span>7.4</span> /10</p>
+												</div>
+											</div>
+										</div>
+										<div class="slide-it">
+											<div class="movie-item">
+												<div class="mv-img">
+													<img src="images/uploads/mv-item3.jpg" alt="" width="185" height="284">
+												</div>
+												<div class="hvr-inner">
+													<a href="moviesingle.html"> Read more <i class="ion-android-arrow-dropright"></i> </a>
+												</div>
+												<div class="title-in">
+													<h6><a href="#">Die hard</a></h6>
+													<p><i class="ion-android-star"></i><span>7.4</span> /10</p>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
 				</div>
-
-			<?php } ?>
-		</div>
-		<button class="home__nav home__nav--prev" data-nav="#flixtv-hero" type="button"></button>
-		<button class="home__nav home__nav--next" data-nav="#flixtv-hero" type="button"></button>
-	</div>
-	<!-- end home -->
-	<!-- catalog -->
-	<div class="catalog">
-		<div class="container">
-			<div class="row">
-				<div class="col-12">
-					<div class="col-12" style="padding-right: 0px; padding-left:0px;">
-					<h2 class="section__title" style="border-left: 3px solid #408bea;padding-left:10px; font-size:30px;">FEATURED</h2>
-					</div>
-
-					<div class="row row--grid">
-						<div class="col-12 col-sm-12 col-lg-12 col-xl-12">
-							<div class="section__series-wrap">
-								<div class="section__series owl-carousel" id="popular">
-									<?php foreach ($featured1->result() as $row) { ?>
-										<div class="card">
-										
-											<a href="<?php echo base_url(); ?>details/<?php echo $row->id; ?>" class="card__cover">
-												<img src="<?php echo base_url() . 'assets/movies/' . $row->picture; ?>" alt="">
-												<svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
-													<path fill-rule="evenodd" clip-rule="evenodd" d="M11 1C16.5228 1 21 5.47716 21 11C21 16.5228 16.5228 21 11 21C5.47716 21 1 16.5228 1 11C1 5.47716 5.47716 1 11 1Z" stroke-linecap="round" stroke-linejoin="round" />
-													<path fill-rule="evenodd" clip-rule="evenodd" d="M14.0501 11.4669C13.3211 12.2529 11.3371 13.5829 10.3221 14.0099C10.1601 14.0779 9.74711 14.2219 9.65811 14.2239C9.46911 14.2299 9.28711 14.1239 9.19911 13.9539C9.16511 13.8879 9.06511 13.4569 9.03311 13.2649C8.93811 12.6809 8.88911 11.7739 8.89011 10.8619C8.88911 9.90489 8.94211 8.95489 9.04811 8.37689C9.07611 8.22089 9.15811 7.86189 9.18211 7.80389C9.22711 7.69589 9.30911 7.61089 9.40811 7.55789C9.48411 7.51689 9.57111 7.49489 9.65811 7.49789C9.74711 7.49989 10.1091 7.62689 10.2331 7.67589C11.2111 8.05589 13.2801 9.43389 14.0401 10.2439C14.1081 10.3169 14.2951 10.5129 14.3261 10.5529C14.3971 10.6429 14.4321 10.7519 14.4321 10.8619C14.4321 10.9639 14.4011 11.0679 14.3371 11.1549C14.3041 11.1999 14.1131 11.3999 14.0501 11.4669Z" stroke-linecap="round" stroke-linejoin="round" />
-												</svg>
-											</a>
-											<button class="card__add" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-													<path d="M16,2H8A3,3,0,0,0,5,5V21a1,1,0,0,0,.5.87,1,1,0,0,0,1,0L12,18.69l5.5,3.18A1,1,0,0,0,18,22a1,1,0,0,0,.5-.13A1,1,0,0,0,19,21V5A3,3,0,0,0,16,2Zm1,17.27-4.5-2.6a1,1,0,0,0-1,0L7,19.27V5A1,1,0,0,1,8,4h8a1,1,0,0,1,1,1Z" />
-												</svg></button>
-											<span class="card__rating"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-													<path d="M22,9.67A1,1,0,0,0,21.14,9l-5.69-.83L12.9,3a1,1,0,0,0-1.8,0L8.55,8.16,2.86,9a1,1,0,0,0-.81.68,1,1,0,0,0,.25,1l4.13,4-1,5.68A1,1,0,0,0,6.9,21.44L12,18.77l5.1,2.67a.93.93,0,0,0,.46.12,1,1,0,0,0,.59-.19,1,1,0,0,0,.4-1l-1-5.68,4.13-4A1,1,0,0,0,22,9.67Zm-6.15,4a1,1,0,0,0-.29.88l.72,4.2-3.76-2a1.06,1.06,0,0,0-.94,0l-3.76,2,.72-4.2a1,1,0,0,0-.29-.88l-3-3,4.21-.61a1,1,0,0,0,.76-.55L12,5.7l1.88,3.82a1,1,0,0,0,.76.55l4.21.61Z" />
-												</svg><?php echo $row->rating; ?></span>
-											<h3 class="card__title" style="font-size:14px ;"><a href="<?php echo base_url(); ?>/details/<?php echo $row->id; ?>"><?php echo ucwords($row->title); ?></a></h3>
-											<ul class="card__list">
-												<li style="color:#707070;"><?php echo $row->year; ?></li>
-											</ul>
-										</div>
-									<?php } ?>
-								</div>
-							</div>
+				<div class="col-md-4">
+					<div class="sidebar">
+						<div class="ads">
+							<img src="images/uploads/ads1.png" alt="" width="336" height="296">
 						</div>
-						<div class="col-12 col-sm-12 col-lg-12 col-xl-12">
-							<div class="section__series-wrap">
-								<div class="section__series owl-carousel" id="popular">
-									<?php foreach ($featured2->result() as $row) { ?>
-										<div class="card">
-											<a href="<?php echo base_url(); ?>details/<?php echo $row->id; ?>" class="card__cover">
-												<img src="<?php echo base_url() . 'assets/movies/' . $row->picture; ?>" alt="">
-												<svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
-													<path fill-rule="evenodd" clip-rule="evenodd" d="M11 1C16.5228 1 21 5.47716 21 11C21 16.5228 16.5228 21 11 21C5.47716 21 1 16.5228 1 11C1 5.47716 5.47716 1 11 1Z" stroke-linecap="round" stroke-linejoin="round" />
-													<path fill-rule="evenodd" clip-rule="evenodd" d="M14.0501 11.4669C13.3211 12.2529 11.3371 13.5829 10.3221 14.0099C10.1601 14.0779 9.74711 14.2219 9.65811 14.2239C9.46911 14.2299 9.28711 14.1239 9.19911 13.9539C9.16511 13.8879 9.06511 13.4569 9.03311 13.2649C8.93811 12.6809 8.88911 11.7739 8.89011 10.8619C8.88911 9.90489 8.94211 8.95489 9.04811 8.37689C9.07611 8.22089 9.15811 7.86189 9.18211 7.80389C9.22711 7.69589 9.30911 7.61089 9.40811 7.55789C9.48411 7.51689 9.57111 7.49489 9.65811 7.49789C9.74711 7.49989 10.1091 7.62689 10.2331 7.67589C11.2111 8.05589 13.2801 9.43389 14.0401 10.2439C14.1081 10.3169 14.2951 10.5129 14.3261 10.5529C14.3971 10.6429 14.4321 10.7519 14.4321 10.8619C14.4321 10.9639 14.4011 11.0679 14.3371 11.1549C14.3041 11.1999 14.1131 11.3999 14.0501 11.4669Z" stroke-linecap="round" stroke-linejoin="round" />
-												</svg>
-											</a>
-											<button class="card__add" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-													<path d="M16,2H8A3,3,0,0,0,5,5V21a1,1,0,0,0,.5.87,1,1,0,0,0,1,0L12,18.69l5.5,3.18A1,1,0,0,0,18,22a1,1,0,0,0,.5-.13A1,1,0,0,0,19,21V5A3,3,0,0,0,16,2Zm1,17.27-4.5-2.6a1,1,0,0,0-1,0L7,19.27V5A1,1,0,0,1,8,4h8a1,1,0,0,1,1,1Z" />
-												</svg></button>
-											<span class="card__rating"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-													<path d="M22,9.67A1,1,0,0,0,21.14,9l-5.69-.83L12.9,3a1,1,0,0,0-1.8,0L8.55,8.16,2.86,9a1,1,0,0,0-.81.68,1,1,0,0,0,.25,1l4.13,4-1,5.68A1,1,0,0,0,6.9,21.44L12,18.77l5.1,2.67a.93.93,0,0,0,.46.12,1,1,0,0,0,.59-.19,1,1,0,0,0,.4-1l-1-5.68,4.13-4A1,1,0,0,0,22,9.67Zm-6.15,4a1,1,0,0,0-.29.88l.72,4.2-3.76-2a1.06,1.06,0,0,0-.94,0l-3.76,2,.72-4.2a1,1,0,0,0-.29-.88l-3-3,4.21-.61a1,1,0,0,0,.76-.55L12,5.7l1.88,3.82a1,1,0,0,0,.76.55l4.21.61Z" />
-												</svg><?php echo $row->rating; ?></span>
-												<h3 class="card__title" style="font-size:14px ;"><a href="<?php echo base_url(); ?>/details/<?php echo $row->id; ?>"><?php echo ucwords($row->title); ?></a></h3>
-											<ul class="card__list">
-												<li style="color:#707070;"><?php echo $row->year; ?></li>
-											</ul>
-										</div>
-									<?php } ?>
+						<div class="celebrities">
+							<h4 class="sb-title">Spotlight Celebrities</h4>
+							<div class="celeb-item">
+								<a href="#"><img src="images/uploads/ava1.jpg" alt="" width="70" height="70"></a>
+								<div class="celeb-author">
+									<h6><a href="#">Samuel N. Jack</a></h6>
+									<span>Actor</span>
 								</div>
 							</div>
-						</div>
-						<div class="col-12 col-sm-12 col-lg-12 col-xl-12">
-							<div class="section__series-wrap">
-								<div class="section__series owl-carousel" id="popular">
-									<?php foreach ($featured3->result() as $row) { ?>
-										<div class="card">
-											<a href="<?php echo base_url(); ?>details/<?php echo $row->id; ?>" class="card__cover">
-												<img src="<?php echo base_url() . 'assets/movies/' . $row->picture; ?>" alt="">
-												<svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
-													<path fill-rule="evenodd" clip-rule="evenodd" d="M11 1C16.5228 1 21 5.47716 21 11C21 16.5228 16.5228 21 11 21C5.47716 21 1 16.5228 1 11C1 5.47716 5.47716 1 11 1Z" stroke-linecap="round" stroke-linejoin="round" />
-													<path fill-rule="evenodd" clip-rule="evenodd" d="M14.0501 11.4669C13.3211 12.2529 11.3371 13.5829 10.3221 14.0099C10.1601 14.0779 9.74711 14.2219 9.65811 14.2239C9.46911 14.2299 9.28711 14.1239 9.19911 13.9539C9.16511 13.8879 9.06511 13.4569 9.03311 13.2649C8.93811 12.6809 8.88911 11.7739 8.89011 10.8619C8.88911 9.90489 8.94211 8.95489 9.04811 8.37689C9.07611 8.22089 9.15811 7.86189 9.18211 7.80389C9.22711 7.69589 9.30911 7.61089 9.40811 7.55789C9.48411 7.51689 9.57111 7.49489 9.65811 7.49789C9.74711 7.49989 10.1091 7.62689 10.2331 7.67589C11.2111 8.05589 13.2801 9.43389 14.0401 10.2439C14.1081 10.3169 14.2951 10.5129 14.3261 10.5529C14.3971 10.6429 14.4321 10.7519 14.4321 10.8619C14.4321 10.9639 14.4011 11.0679 14.3371 11.1549C14.3041 11.1999 14.1131 11.3999 14.0501 11.4669Z" stroke-linecap="round" stroke-linejoin="round" />
-												</svg>
-											</a>
-											<button class="card__add" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-													<path d="M16,2H8A3,3,0,0,0,5,5V21a1,1,0,0,0,.5.87,1,1,0,0,0,1,0L12,18.69l5.5,3.18A1,1,0,0,0,18,22a1,1,0,0,0,.5-.13A1,1,0,0,0,19,21V5A3,3,0,0,0,16,2Zm1,17.27-4.5-2.6a1,1,0,0,0-1,0L7,19.27V5A1,1,0,0,1,8,4h8a1,1,0,0,1,1,1Z" />
-												</svg></button>
-											<span class="card__rating"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-													<path d="M22,9.67A1,1,0,0,0,21.14,9l-5.69-.83L12.9,3a1,1,0,0,0-1.8,0L8.55,8.16,2.86,9a1,1,0,0,0-.81.68,1,1,0,0,0,.25,1l4.13,4-1,5.68A1,1,0,0,0,6.9,21.44L12,18.77l5.1,2.67a.93.93,0,0,0,.46.12,1,1,0,0,0,.59-.19,1,1,0,0,0,.4-1l-1-5.68,4.13-4A1,1,0,0,0,22,9.67Zm-6.15,4a1,1,0,0,0-.29.88l.72,4.2-3.76-2a1.06,1.06,0,0,0-.94,0l-3.76,2,.72-4.2a1,1,0,0,0-.29-.88l-3-3,4.21-.61a1,1,0,0,0,.76-.55L12,5.7l1.88,3.82a1,1,0,0,0,.76.55l4.21.61Z" />
-												</svg><?php echo $row->rating; ?></span>
-												<h3 class="card__title" style="font-size:14px ;"><a href="<?php echo base_url(); ?>/details/<?php echo $row->id; ?>"><?php echo ucwords($row->title); ?></a></h3>
-											<ul class="card__list">
-												<li style="color:#707070;"><?php echo $row->year; ?></li>
-											</ul>
-										</div>
-									<?php } ?>
+							<div class="celeb-item">
+								<a href="#"><img src="images/uploads/ava2.jpg" alt="" width="70" height="70"></a>
+								<div class="celeb-author">
+									<h6><a href="#">Benjamin Carroll</a></h6>
+									<span>Actor</span>
 								</div>
 							</div>
-						</div>
-						<div class="col-12 col-sm-12 col-lg-12 col-xl-12">
-							<div class="section__series-wrap">
-								<div class="section__series owl-carousel" id="popular">
-									<?php foreach ($featured4->result() as $row) { ?>
-										<div class="card">
-											<a href="<?php echo base_url(); ?>details/<?php echo $row->id; ?>" class="card__cover">
-												<img src="<?php echo base_url() . 'assets/movies/' . $row->picture; ?>" alt="">
-												<svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
-													<path fill-rule="evenodd" clip-rule="evenodd" d="M11 1C16.5228 1 21 5.47716 21 11C21 16.5228 16.5228 21 11 21C5.47716 21 1 16.5228 1 11C1 5.47716 5.47716 1 11 1Z" stroke-linecap="round" stroke-linejoin="round" />
-													<path fill-rule="evenodd" clip-rule="evenodd" d="M14.0501 11.4669C13.3211 12.2529 11.3371 13.5829 10.3221 14.0099C10.1601 14.0779 9.74711 14.2219 9.65811 14.2239C9.46911 14.2299 9.28711 14.1239 9.19911 13.9539C9.16511 13.8879 9.06511 13.4569 9.03311 13.2649C8.93811 12.6809 8.88911 11.7739 8.89011 10.8619C8.88911 9.90489 8.94211 8.95489 9.04811 8.37689C9.07611 8.22089 9.15811 7.86189 9.18211 7.80389C9.22711 7.69589 9.30911 7.61089 9.40811 7.55789C9.48411 7.51689 9.57111 7.49489 9.65811 7.49789C9.74711 7.49989 10.1091 7.62689 10.2331 7.67589C11.2111 8.05589 13.2801 9.43389 14.0401 10.2439C14.1081 10.3169 14.2951 10.5129 14.3261 10.5529C14.3971 10.6429 14.4321 10.7519 14.4321 10.8619C14.4321 10.9639 14.4011 11.0679 14.3371 11.1549C14.3041 11.1999 14.1131 11.3999 14.0501 11.4669Z" stroke-linecap="round" stroke-linejoin="round" />
-												</svg>
-											</a>
-											<button class="card__add" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-													<path d="M16,2H8A3,3,0,0,0,5,5V21a1,1,0,0,0,.5.87,1,1,0,0,0,1,0L12,18.69l5.5,3.18A1,1,0,0,0,18,22a1,1,0,0,0,.5-.13A1,1,0,0,0,19,21V5A3,3,0,0,0,16,2Zm1,17.27-4.5-2.6a1,1,0,0,0-1,0L7,19.27V5A1,1,0,0,1,8,4h8a1,1,0,0,1,1,1Z" />
-												</svg></button>
-											<span class="card__rating"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-													<path d="M22,9.67A1,1,0,0,0,21.14,9l-5.69-.83L12.9,3a1,1,0,0,0-1.8,0L8.55,8.16,2.86,9a1,1,0,0,0-.81.68,1,1,0,0,0,.25,1l4.13,4-1,5.68A1,1,0,0,0,6.9,21.44L12,18.77l5.1,2.67a.93.93,0,0,0,.46.12,1,1,0,0,0,.59-.19,1,1,0,0,0,.4-1l-1-5.68,4.13-4A1,1,0,0,0,22,9.67Zm-6.15,4a1,1,0,0,0-.29.88l.72,4.2-3.76-2a1.06,1.06,0,0,0-.94,0l-3.76,2,.72-4.2a1,1,0,0,0-.29-.88l-3-3,4.21-.61a1,1,0,0,0,.76-.55L12,5.7l1.88,3.82a1,1,0,0,0,.76.55l4.21.61Z" />
-												</svg><?php echo $row->rating; ?></span>
-												<h3 class="card__title" style="font-size:14px ;"><a href="<?php echo base_url(); ?>/details/<?php echo $row->id; ?>"><?php echo ucwords($row->title); ?></a></h3>
-											<ul class="card__list">
-												<li style="color:#707070;"><?php echo $row->year; ?></li>
-											</ul>
-										</div>
-									<?php } ?>
+							<div class="celeb-item">
+								<a href="#"><img src="images/uploads/ava3.jpg" alt="" width="70" height="70"></a>
+								<div class="celeb-author">
+									<h6><a href="#">Beverly Griffin</a></h6>
+									<span>Actor</span>
 								</div>
 							</div>
+							<div class="celeb-item">
+								<a href="#"><img src="images/uploads/ava4.jpg" alt="" width="70" height="70"></a>
+								<div class="celeb-author">
+									<h6><a href="#">Justin Weaver</a></h6>
+									<span>Actor</span>
+								</div>
+							</div>
+							<a href="#" class="btn">See all celebrities<i class="ion-ios-arrow-right"></i></a>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-	<!-- end catalog -->
-	<!-- popular -->
-	<section class="section">
-		<div class="container">
-			<div class="row">
-				<div class="col-12">
-					<h2 class="section__title" style="border-left: 3px solid #408bea;padding-left:10px; font-size:30px; margin-top: 30px;">
-						POPULAR
-					</h2>
-				</div>
 
-				<div class="col-12">
-					<div class="section__carousel-wrap">
-						<div class="section__carousel owl-carousel" id="popular">
-							<?php foreach ($popular_movies->result() as $row) { ?>
-								<div class="card">
-									<a href="<?php echo base_url(); ?>details/<?php echo $row->id; ?>" class="card__cover">
-										<img src="<?php echo base_url() . 'assets/movies/' . $row->picture; ?>" alt="">
-										<svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
-											<path fill-rule="evenodd" clip-rule="evenodd" d="M11 1C16.5228 1 21 5.47716 21 11C21 16.5228 16.5228 21 11 21C5.47716 21 1 16.5228 1 11C1 5.47716 5.47716 1 11 1Z" stroke-linecap="round" stroke-linejoin="round" />
-											<path fill-rule="evenodd" clip-rule="evenodd" d="M14.0501 11.4669C13.3211 12.2529 11.3371 13.5829 10.3221 14.0099C10.1601 14.0779 9.74711 14.2219 9.65811 14.2239C9.46911 14.2299 9.28711 14.1239 9.19911 13.9539C9.16511 13.8879 9.06511 13.4569 9.03311 13.2649C8.93811 12.6809 8.88911 11.7739 8.89011 10.8619C8.88911 9.90489 8.94211 8.95489 9.04811 8.37689C9.07611 8.22089 9.15811 7.86189 9.18211 7.80389C9.22711 7.69589 9.30911 7.61089 9.40811 7.55789C9.48411 7.51689 9.57111 7.49489 9.65811 7.49789C9.74711 7.49989 10.1091 7.62689 10.2331 7.67589C11.2111 8.05589 13.2801 9.43389 14.0401 10.2439C14.1081 10.3169 14.2951 10.5129 14.3261 10.5529C14.3971 10.6429 14.4321 10.7519 14.4321 10.8619C14.4321 10.9639 14.4011 11.0679 14.3371 11.1549C14.3041 11.1999 14.1131 11.3999 14.0501 11.4669Z" stroke-linecap="round" stroke-linejoin="round" />
-										</svg>
-									</a>
-									<button class="card__add" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-											<path d="M16,2H8A3,3,0,0,0,5,5V21a1,1,0,0,0,.5.87,1,1,0,0,0,1,0L12,18.69l5.5,3.18A1,1,0,0,0,18,22a1,1,0,0,0,.5-.13A1,1,0,0,0,19,21V5A3,3,0,0,0,16,2Zm1,17.27-4.5-2.6a1,1,0,0,0-1,0L7,19.27V5A1,1,0,0,1,8,4h8a1,1,0,0,1,1,1Z" />
-										</svg></button>
-									<span class="card__rating"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-											<path d="M22,9.67A1,1,0,0,0,21.14,9l-5.69-.83L12.9,3a1,1,0,0,0-1.8,0L8.55,8.16,2.86,9a1,1,0,0,0-.81.68,1,1,0,0,0,.25,1l4.13,4-1,5.68A1,1,0,0,0,6.9,21.44L12,18.77l5.1,2.67a.93.93,0,0,0,.46.12,1,1,0,0,0,.59-.19,1,1,0,0,0,.4-1l-1-5.68,4.13-4A1,1,0,0,0,22,9.67Zm-6.15,4a1,1,0,0,0-.29.88l.72,4.2-3.76-2a1.06,1.06,0,0,0-.94,0l-3.76,2,.72-4.2a1,1,0,0,0-.29-.88l-3-3,4.21-.61a1,1,0,0,0,.76-.55L12,5.7l1.88,3.82a1,1,0,0,0,.76.55l4.21.61Z" />
-										</svg><?php echo $row->rating?></span>
-									<h3 class="card__title" style="font-size:14px ;"><a href="<?php echo base_url(); ?>/details/<?php echo $row->id; ?>"><?php echo ucwords($row->title); ?></a></h3>
-									<ul class="card__list">
-										<?php
-										$this->db->where('movie_id', $row->id);
-										$this->db->join('categories', 'categories.id = movie_categories.category_id', 'left');
-										$cat = $this->db->get('movie_categories')->result();
-										foreach ($cat as $val_cat) {
-											echo "<li style='color:#707070;'>" . $val_cat->name . "</li>";
-										}
-										?>
-										<li style="color:#707070;"><?php echo $row->year; ?></li>
-									</ul>
-								</div>
-							<?php } ?>
-						</div>
-						<button class="section__nav section__nav--cards section__nav--prev" data-nav="#popular" type="button"><svg width="17" height="15" viewBox="0 0 17 15" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1.25 7.72559L16.25 7.72559" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M7.2998 1.70124L1.2498 7.72524L7.2998 13.7502" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
-						<button class="section__nav section__nav--cards section__nav--next" data-nav="#popular" type="button"><svg width="17" height="15" viewBox="0 0 17 15" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M15.75 7.72559L0.75 7.72559" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M9.7002 1.70124L15.7502 7.72524L9.7002 13.7502" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
-					</div>
-				</div>
-			</div>
-	</section>
-	<!-- end popular -->
-
-	<!-- Film Action -->
-	<section class="section" >
+	<div class="trailers">
 		<div class="container">
-			<div class="row" style="padding-top: 50px;border-top: 1px solid rgba(47,128,237,0.1);">
-				<div class="col-12">
-					<h2 class="section__title" style="border-left: 3px solid #408bea;padding-left:10px; font-size:30px;"><a href="<?php echo base_url(); ?>frontend/beranda/categories/<?php echo $row->id; ?>">FILM ACTION</a></h2>
-				</div>
-
-				<div class="col-12">
-					<div class="section__carousel-wrap">
-						<div class="section__carousel owl-carousel" id="classic">
-							<?php foreach ($action_movies->result() as $row) { ?>
-								<div class="card">
-									<a href="<?php echo base_url(); ?>frontend/beranda/categories/<?php echo $row->id; ?>" class="card__cover">
-										<img src="<?php echo base_url() . 'assets/movies/' . $row->picture; ?>" alt="">
-										<svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
-											<path fill-rule="evenodd" clip-rule="evenodd" d="M11 1C16.5228 1 21 5.47716 21 11C21 16.5228 16.5228 21 11 21C5.47716 21 1 16.5228 1 11C1 5.47716 5.47716 1 11 1Z" stroke-linecap="round" stroke-linejoin="round" />
-											<path fill-rule="evenodd" clip-rule="evenodd" d="M14.0501 11.4669C13.3211 12.2529 11.3371 13.5829 10.3221 14.0099C10.1601 14.0779 9.74711 14.2219 9.65811 14.2239C9.46911 14.2299 9.28711 14.1239 9.19911 13.9539C9.16511 13.8879 9.06511 13.4569 9.03311 13.2649C8.93811 12.6809 8.88911 11.7739 8.89011 10.8619C8.88911 9.90489 8.94211 8.95489 9.04811 8.37689C9.07611 8.22089 9.15811 7.86189 9.18211 7.80389C9.22711 7.69589 9.30911 7.61089 9.40811 7.55789C9.48411 7.51689 9.57111 7.49489 9.65811 7.49789C9.74711 7.49989 10.1091 7.62689 10.2331 7.67589C11.2111 8.05589 13.2801 9.43389 14.0401 10.2439C14.1081 10.3169 14.2951 10.5129 14.3261 10.5529C14.3971 10.6429 14.4321 10.7519 14.4321 10.8619C14.4321 10.9639 14.4011 11.0679 14.3371 11.1549C14.3041 11.1999 14.1131 11.3999 14.0501 11.4669Z" stroke-linecap="round" stroke-linejoin="round" />
-										</svg>
-									</a>
-									<button class="card__add" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-											<path d="M16,2H8A3,3,0,0,0,5,5V21a1,1,0,0,0,.5.87,1,1,0,0,0,1,0L12,18.69l5.5,3.18A1,1,0,0,0,18,22a1,1,0,0,0,.5-.13A1,1,0,0,0,19,21V5A3,3,0,0,0,16,2Zm1,17.27-4.5-2.6a1,1,0,0,0-1,0L7,19.27V5A1,1,0,0,1,8,4h8a1,1,0,0,1,1,1Z" />
-										</svg></button>
-									<span class="card__rating"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-											<path d="M22,9.67A1,1,0,0,0,21.14,9l-5.69-.83L12.9,3a1,1,0,0,0-1.8,0L8.55,8.16,2.86,9a1,1,0,0,0-.81.68,1,1,0,0,0,.25,1l4.13,4-1,5.68A1,1,0,0,0,6.9,21.44L12,18.77l5.1,2.67a.93.93,0,0,0,.46.12,1,1,0,0,0,.59-.19,1,1,0,0,0,.4-1l-1-5.68,4.13-4A1,1,0,0,0,22,9.67Zm-6.15,4a1,1,0,0,0-.29.88l.72,4.2-3.76-2a1.06,1.06,0,0,0-.94,0l-3.76,2,.72-4.2a1,1,0,0,0-.29-.88l-3-3,4.21-.61a1,1,0,0,0,.76-.55L12,5.7l1.88,3.82a1,1,0,0,0,.76.55l4.21.61Z" />
-										</svg><?php echo $row->rating; ?></span>
-									<h3 class="card__title" style="font-size:14px;"><a href="<?php echo base_url(); ?>/details/<?php echo $row->id; ?>"><?php echo ucwords($row->title); ?></a></h3>
-									<ul class="card__list">
-										<li style="color:#707070;"><?php echo $row->year; ?></li>
-									</ul>
-								</div>
-							<?php } ?>
-						</div>
-						<button class="section__nav section__nav--cards section__nav--prev" data-nav="#classic" type="button"><svg width="17" height="15" viewBox="0 0 17 15" fill="none" xmlns="http://www.w3.org/2000/svg">
-								<path d="M1.25 7.72559L16.25 7.72559" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-								<path d="M7.2998 1.70124L1.2498 7.72524L7.2998 13.7502" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-							</svg></button>
-						<button class="section__nav section__nav--cards section__nav--next" data-nav="#classic" type="button"><svg width="17" height="15" viewBox="0 0 17 15" fill="none" xmlns="http://www.w3.org/2000/svg">
-								<path d="M15.75 7.72559L0.75 7.72559" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-								<path d="M9.7002 1.70124L15.7502 7.72524L9.7002 13.7502" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-							</svg></button>
+			<div class="row ipad-width">
+				<div class="col-md-12">
+					<div class="title-hd">
+						<h2>in theater</h2>
+						<a href="#" class="viewall">View all <i class="ion-ios-arrow-right"></i></a>
 					</div>
-				</div>
-	</section>
-	<!-- end film action -->
-	<!-- Film drama-->
-	<section class="section" >
-		<div class="container">
-			<div class="row" style="padding-top: 50px;border-top: 1px solid rgba(47,128,237,0.1);">
-				<div class="col-12">
-					<h2 class="section__title" style="border-left: 3px solid #408bea;padding-left:10px; font-size:30px;"><a href="#">DRAMA KOREA</a></h2>
-				</div>
-
-				<div class="col-12">
-					<div class="section__carousel-wrap">
-						<div class="section__carousel owl-carousel" id="newest">
-							<?php foreach ($drama_korea->result() as $row) { ?>
-								<div class="card">
-									<a href="<?php echo base_url(); ?>details/<?php echo $row->id; ?>" class="card__cover">
-										<img src="<?php echo base_url() . 'assets/movies/' . $row->picture; ?>" alt="">
-										<svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
-											<path fill-rule="evenodd" clip-rule="evenodd" d="M11 1C16.5228 1 21 5.47716 21 11C21 16.5228 16.5228 21 11 21C5.47716 21 1 16.5228 1 11C1 5.47716 5.47716 1 11 1Z" stroke-linecap="round" stroke-linejoin="round" />
-											<path fill-rule="evenodd" clip-rule="evenodd" d="M14.0501 11.4669C13.3211 12.2529 11.3371 13.5829 10.3221 14.0099C10.1601 14.0779 9.74711 14.2219 9.65811 14.2239C9.46911 14.2299 9.28711 14.1239 9.19911 13.9539C9.16511 13.8879 9.06511 13.4569 9.03311 13.2649C8.93811 12.6809 8.88911 11.7739 8.89011 10.8619C8.88911 9.90489 8.94211 8.95489 9.04811 8.37689C9.07611 8.22089 9.15811 7.86189 9.18211 7.80389C9.22711 7.69589 9.30911 7.61089 9.40811 7.55789C9.48411 7.51689 9.57111 7.49489 9.65811 7.49789C9.74711 7.49989 10.1091 7.62689 10.2331 7.67589C11.2111 8.05589 13.2801 9.43389 14.0401 10.2439C14.1081 10.3169 14.2951 10.5129 14.3261 10.5529C14.3971 10.6429 14.4321 10.7519 14.4321 10.8619C14.4321 10.9639 14.4011 11.0679 14.3371 11.1549C14.3041 11.1999 14.1131 11.3999 14.0501 11.4669Z" stroke-linecap="round" stroke-linejoin="round" />
-										</svg>
-									</a>
-									<button class="card__add" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-											<path d="M16,2H8A3,3,0,0,0,5,5V21a1,1,0,0,0,.5.87,1,1,0,0,0,1,0L12,18.69l5.5,3.18A1,1,0,0,0,18,22a1,1,0,0,0,.5-.13A1,1,0,0,0,19,21V5A3,3,0,0,0,16,2Zm1,17.27-4.5-2.6a1,1,0,0,0-1,0L7,19.27V5A1,1,0,0,1,8,4h8a1,1,0,0,1,1,1Z" />
-										</svg></button>
-									<span class="card__rating"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-											<path d="M22,9.67A1,1,0,0,0,21.14,9l-5.69-.83L12.9,3a1,1,0,0,0-1.8,0L8.55,8.16,2.86,9a1,1,0,0,0-.81.68,1,1,0,0,0,.25,1l4.13,4-1,5.68A1,1,0,0,0,6.9,21.44L12,18.77l5.1,2.67a.93.93,0,0,0,.46.12,1,1,0,0,0,.59-.19,1,1,0,0,0,.4-1l-1-5.68,4.13-4A1,1,0,0,0,22,9.67Zm-6.15,4a1,1,0,0,0-.29.88l.72,4.2-3.76-2a1.06,1.06,0,0,0-.94,0l-3.76,2,.72-4.2a1,1,0,0,0-.29-.88l-3-3,4.21-.61a1,1,0,0,0,.76-.55L12,5.7l1.88,3.82a1,1,0,0,0,.76.55l4.21.61Z" />
-										</svg><?php echo $row->rating; ?></span>
-									<h3 class="card__title" style="font-size:14px;"><a href="d<?php echo base_url(); ?>/details/<?php echo $row->id; ?>"><?php echo ucwords($row->title); ?></a></h3>
-									<ul class="card__list">
-										<li style="color:#707070;"><?php echo $row->year; ?></li>
-									</ul>
-								</div>
-							<?php } ?>
-						</div>
-						<button class="section__nav section__nav--cards section__nav--prev" data-nav="#newest" type="button"><svg width="17" height="15" viewBox="0 0 17 15" fill="none" xmlns="http://www.w3.org/2000/svg">
-								<path d="M1.25 7.72559L16.25 7.72559" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-								<path d="M7.2998 1.70124L1.2498 7.72524L7.2998 13.7502" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-							</svg></button>
-						<button class="section__nav section__nav--cards section__nav--next" data-nav="#newest" type="button"><svg width="17" height="15" viewBox="0 0 17 15" fill="none" xmlns="http://www.w3.org/2000/svg">
-								<path d="M15.75 7.72559L0.75 7.72559" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-								<path d="M9.7002 1.70124L15.7502 7.72524L9.7002 13.7502" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-							</svg></button>
-					</div>
-				</div>
-	</section>
-	<!-- end drama -->
-	<!-- Romance -->
-	<section class="section">
-		<div class="container">
-			<div class="row" style="padding-top: 50px;border-top: 1px solid rgba(47,128,237,0.1);">
-				<div class="col-12">
-					<h2 class="section__title" style="border-left: 3px solid #408bea;padding-left:10px; font-size:30px;"><a href="#">ROMANCE</a></h2>
-				</div>
-				<div class="col-12">
-					<div class="section__carousel-wrap">
-						<div class="section__carousel owl-carousel" id="similar">
-							<?php foreach ($romance->result() as $row) { ?>
-								<div class="card">
-									<a href="<?php echo base_url(); ?>details/<?php echo $row->id; ?>" class="card__cover">
-										<img src="<?php echo base_url() . 'assets/movies/' . $row->picture; ?>" alt="">
-										<svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
-											<path fill-rule="evenodd" clip-rule="evenodd" d="M11 1C16.5228 1 21 5.47716 21 11C21 16.5228 16.5228 21 11 21C5.47716 21 1 16.5228 1 11C1 5.47716 5.47716 1 11 1Z" stroke-linecap="round" stroke-linejoin="round" />
-											<path fill-rule="evenodd" clip-rule="evenodd" d="M14.0501 11.4669C13.3211 12.2529 11.3371 13.5829 10.3221 14.0099C10.1601 14.0779 9.74711 14.2219 9.65811 14.2239C9.46911 14.2299 9.28711 14.1239 9.19911 13.9539C9.16511 13.8879 9.06511 13.4569 9.03311 13.2649C8.93811 12.6809 8.88911 11.7739 8.89011 10.8619C8.88911 9.90489 8.94211 8.95489 9.04811 8.37689C9.07611 8.22089 9.15811 7.86189 9.18211 7.80389C9.22711 7.69589 9.30911 7.61089 9.40811 7.55789C9.48411 7.51689 9.57111 7.49489 9.65811 7.49789C9.74711 7.49989 10.1091 7.62689 10.2331 7.67589C11.2111 8.05589 13.2801 9.43389 14.0401 10.2439C14.1081 10.3169 14.2951 10.5129 14.3261 10.5529C14.3971 10.6429 14.4321 10.7519 14.4321 10.8619C14.4321 10.9639 14.4011 11.0679 14.3371 11.1549C14.3041 11.1999 14.1131 11.3999 14.0501 11.4669Z" stroke-linecap="round" stroke-linejoin="round" />
-										</svg>
-									</a>
-									<button class="card__add" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-											<path d="M16,2H8A3,3,0,0,0,5,5V21a1,1,0,0,0,.5.87,1,1,0,0,0,1,0L12,18.69l5.5,3.18A1,1,0,0,0,18,22a1,1,0,0,0,.5-.13A1,1,0,0,0,19,21V5A3,3,0,0,0,16,2Zm1,17.27-4.5-2.6a1,1,0,0,0-1,0L7,19.27V5A1,1,0,0,1,8,4h8a1,1,0,0,1,1,1Z" />
-										</svg></button>
-									<span class="card__rating"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-											<path d="M22,9.67A1,1,0,0,0,21.14,9l-5.69-.83L12.9,3a1,1,0,0,0-1.8,0L8.55,8.16,2.86,9a1,1,0,0,0-.81.68,1,1,0,0,0,.25,1l4.13,4-1,5.68A1,1,0,0,0,6.9,21.44L12,18.77l5.1,2.67a.93.93,0,0,0,.46.12,1,1,0,0,0,.59-.19,1,1,0,0,0,.4-1l-1-5.68,4.13-4A1,1,0,0,0,22,9.67Zm-6.15,4a1,1,0,0,0-.29.88l.72,4.2-3.76-2a1.06,1.06,0,0,0-.94,0l-3.76,2,.72-4.2a1,1,0,0,0-.29-.88l-3-3,4.21-.61a1,1,0,0,0,.76-.55L12,5.7l1.88,3.82a1,1,0,0,0,.76.55l4.21.61Z" />
-										</svg><?php echo $row->rating; ?></span>
-									<h3 class="card__title" style="font-size:14px;"><a href="d<?php echo base_url(); ?>/details/<?php echo $row->id; ?>"><?php echo ucwords($row->title); ?></a></h3>
-									<ul class="card__list">
-										<li style="color:#707070;"><?php echo $row->year; ?></li>
-									</ul>
-								</div>
-							<?php } ?>
-						</div>
-						<button class="section__nav section__nav--cards section__nav--prev" data-nav="#similar" type="button"><svg width="17" height="15" viewBox="0 0 17 15" fill="none" xmlns="http://www.w3.org/2000/svg">
-								<path d="M1.25 7.72559L16.25 7.72559" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-								<path d="M7.2998 1.70124L1.2498 7.72524L7.2998 13.7502" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-							</svg></button>
-						<button class="section__nav section__nav--cards section__nav--next" data-nav="#similar" type="button"><svg width="17" height="15" viewBox="0 0 17 15" fill="none" xmlns="http://www.w3.org/2000/svg">
-								<path d="M15.75 7.72559L0.75 7.72559" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-								<path d="M9.7002 1.70124L15.7502 7.72524L9.7002 13.7502" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-							</svg></button>
-					</div>
-				</div>
-	</section>
-	<!-- Film Indonesia -->
-	<section class="section">
-		<div class="container">
-			<div class="row" style="padding-top: 50px;border-top: 1px solid rgba(47,128,237,0.1);">
-				<div class="col-12">
-					<h2 class="section__title" style="border-left: 3px solid #408bea;padding-left:10px;font-size:30px;"><a href="#">FILM INDONESIA</a></h2>
-				</div>
-
-				<div class="col-12">
-					<div class="section__carousel-wrap">
-						<div class="section__carousel owl-carousel" id="binge">
-							<?php foreach ($film_indonesia->result() as $row) { ?>
-								<div class="card">
-									<a href="<?php echo base_url(); ?>details/<?php echo $row->id; ?>" class="card__cover">
-										<img src="<?php echo base_url() . 'assets/movies/' . $row->picture; ?>" alt="">
-										<svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
-											<path fill-rule="evenodd" clip-rule="evenodd" d="M11 1C16.5228 1 21 5.47716 21 11C21 16.5228 16.5228 21 11 21C5.47716 21 1 16.5228 1 11C1 5.47716 5.47716 1 11 1Z" stroke-linecap="round" stroke-linejoin="round" />
-											<path fill-rule="evenodd" clip-rule="evenodd" d="M14.0501 11.4669C13.3211 12.2529 11.3371 13.5829 10.3221 14.0099C10.1601 14.0779 9.74711 14.2219 9.65811 14.2239C9.46911 14.2299 9.28711 14.1239 9.19911 13.9539C9.16511 13.8879 9.06511 13.4569 9.03311 13.2649C8.93811 12.6809 8.88911 11.7739 8.89011 10.8619C8.88911 9.90489 8.94211 8.95489 9.04811 8.37689C9.07611 8.22089 9.15811 7.86189 9.18211 7.80389C9.22711 7.69589 9.30911 7.61089 9.40811 7.55789C9.48411 7.51689 9.57111 7.49489 9.65811 7.49789C9.74711 7.49989 10.1091 7.62689 10.2331 7.67589C11.2111 8.05589 13.2801 9.43389 14.0401 10.2439C14.1081 10.3169 14.2951 10.5129 14.3261 10.5529C14.3971 10.6429 14.4321 10.7519 14.4321 10.8619C14.4321 10.9639 14.4011 11.0679 14.3371 11.1549C14.3041 11.1999 14.1131 11.3999 14.0501 11.4669Z" stroke-linecap="round" stroke-linejoin="round" />
-										</svg>
-									</a>
-									<button class="card__add" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-											<path d="M16,2H8A3,3,0,0,0,5,5V21a1,1,0,0,0,.5.87,1,1,0,0,0,1,0L12,18.69l5.5,3.18A1,1,0,0,0,18,22a1,1,0,0,0,.5-.13A1,1,0,0,0,19,21V5A3,3,0,0,0,16,2Zm1,17.27-4.5-2.6a1,1,0,0,0-1,0L7,19.27V5A1,1,0,0,1,8,4h8a1,1,0,0,1,1,1Z" />
-										</svg></button>
-									<span class="card__rating"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-											<path d="M22,9.67A1,1,0,0,0,21.14,9l-5.69-.83L12.9,3a1,1,0,0,0-1.8,0L8.55,8.16,2.86,9a1,1,0,0,0-.81.68,1,1,0,0,0,.25,1l4.13,4-1,5.68A1,1,0,0,0,6.9,21.44L12,18.77l5.1,2.67a.93.93,0,0,0,.46.12,1,1,0,0,0,.59-.19,1,1,0,0,0,.4-1l-1-5.68,4.13-4A1,1,0,0,0,22,9.67Zm-6.15,4a1,1,0,0,0-.29.88l.72,4.2-3.76-2a1.06,1.06,0,0,0-.94,0l-3.76,2,.72-4.2a1,1,0,0,0-.29-.88l-3-3,4.21-.61a1,1,0,0,0,.76-.55L12,5.7l1.88,3.82a1,1,0,0,0,.76.55l4.21.61Z" />
-										</svg><?php echo $row->rating; ?></span>
-									<h3 class="card__title" style="font-size:14px;"><a href="d<?php echo base_url(); ?>/details/<?php echo $row->id; ?>"><?php echo ucwords($row->title); ?></a></h3>
-									<ul class="card__list">
-										<?php
-										$this->db->where('movie_id', $row->id);
-										$this->db->join('categories', 'categories.id = movie_categories.category_id', 'left');
-										$cat = $this->db->get('movie_categories')->result();
-										foreach ($cat as $val_cat) {
-											echo "<li>" . $val_cat->name . "</li>";
-										}
-										?>
-										<li style="color:#707070;"><?php echo $row->year; ?></li>
-									</ul>
-								</div>
-							<?php } ?>
-						</div>
-						<div> 
-						<button class="section__nav section__nav--cards section__nav--prev" data-nav="#binge" type="button"><svg width="17" height="15" viewBox="0 0 17 15" fill="none" xmlns="http://www.w3.org/2000/svg">
-							<path d="M1.25 7.72559L16.25 7.72559" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-							<path d="M7.2998 1.70124L1.2498 7.72524L7.2998 13.7502" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-						</svg></button>
-						<button class="section__nav section__nav--cards section__nav--next" data-nav="#binge" type="button"><svg width="17" height="15" viewBox="0 0 17 15" fill="none" xmlns="http://www.w3.org/2000/svg">
-							<path d="M15.75 7.72559L0.75 7.72559" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-							<path d="M9.7002 1.70124L15.7502 7.72524L9.7002 13.7502" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-						</svg></button>
-						</div>
-					</div>
-				</div>
-	</section>
-	<!-- end thriller -->
-	<!-- War -->
-	<section class="section" style="padding-bottom:40px;">
-		<div class="container">
-			<div class="row" style="padding-top: 50px;border-top: 1px solid rgba(47,128,237,0.1);">
-				<div class="col-12">
-					<h2 class="section__title" style="border-left: 3px solid #408bea;padding-left:10px; font-size:30px; "><a href="#"> WAR</a></h2>
-				</div>
-				<div class="col-12" >
-					<div class="section__carousel-wrap">
-						<div class="section__carousel owl-carousel" id="subscriptions">
-							<?php foreach ($war->result() as $row) { ?>
-								<div class="card">
-									<a href="<?= site_url('details/').$row->id; ?>" class="card__cover">
-										<img src="<?php echo base_url() . 'assets/movies/' . $row->picture; ?>" style="width:300 ; heigth: auto ;">
-										<svg width="20" height="16" viewBox="0 0 20 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-											<path fill-rule="evenodd" clip-rule="evenodd" d="M13.1615 8.05308C13.1615 9.79908 11.7455 11.2141 9.9995 11.2141C8.2535 11.2141 6.8385 9.79908 6.8385 8.05308C6.8385 6.30608 8.2535 4.89108 9.9995 4.89108C11.7455 4.89108 13.1615 6.30608 13.1615 8.05308Z" stroke-linecap="round" stroke-linejoin="round" />
-											<path fill-rule="evenodd" clip-rule="evenodd" d="M9.998 15.3549C13.806 15.3549 17.289 12.6169 19.25 8.05289C17.289 3.48888 13.806 0.750885 9.998 0.750885H10.002C6.194 0.750885 2.711 3.48888 0.75 8.05289C2.711 12.6169 6.194 15.3549 10.002 15.3549H9.998Z" stroke-linecap="round" stroke-linejoin="round" />
-										</svg>
-									</a>
-									<button class="card__add" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-											<path d="M16,2H8A3,3,0,0,0,5,5V21a1,1,0,0,0,.5.87,1,1,0,0,0,1,0L12,18.69l5.5,3.18A1,1,0,0,0,18,22a1,1,0,0,0,.5-.13A1,1,0,0,0,19,21V5A3,3,0,0,0,16,2Zm1,17.27-4.5-2.6a1,1,0,0,0-1,0L7,19.27V5A1,1,0,0,1,8,4h8a1,1,0,0,1,1,1Z" />
-										</svg></button>
-									<span class="card__rating"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-											<path d="M22,9.67A1,1,0,0,0,21.14,9l-5.69-.83L12.9,3a1,1,0,0,0-1.8,0L8.55,8.16,2.86,9a1,1,0,0,0-.81.68,1,1,0,0,0,.25,1l4.13,4-1,5.68A1,1,0,0,0,6.9,21.44L12,18.77l5.1,2.67a.93.93,0,0,0,.46.12,1,1,0,0,0,.59-.19,1,1,0,0,0,.4-1l-1-5.68,4.13-4A1,1,0,0,0,22,9.67Zm-6.15,4a1,1,0,0,0-.29.88l.72,4.2-3.76-2a1.06,1.06,0,0,0-.94,0l-3.76,2,.72-4.2a1,1,0,0,0-.29-.88l-3-3,4.21-.61a1,1,0,0,0,.76-.55L12,5.7l1.88,3.82a1,1,0,0,0,.76.55l4.21.61Z" />
-										</svg><?php $row->rating ?></span>
-									<h6 class="card__title" style="font-size:14px;"	><a href="<?php echo base_url(); ?>/details/<?php echo $row->id; ?>"><?php echo ucwords($row->title); ?></a></h6>
-									<ul class="card__list card__list--subs">								
-										<li style="color:#707070;"><?php echo $row->year; ?></li>
-									</ul>
-								</div>
-							<?php } ?>
-						</div>
-						<button class="section__nav section__nav--cards section__nav--prev" data-nav="#subscriptions" type="button"><svg width="17" height="15" viewBox="0 0 17 15" fill="none" xmlns="http://www.w3.org/2000/svg">
-								<path d="M1.25 7.72559L16.25 7.72559" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-								<path d="M7.2998 1.70124L1.2498 7.72524L7.2998 13.7502" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-							</svg></button>
-						<button class="section__nav section__nav--cards section__nav--next" data-nav="#subscriptions" type="button"><svg width="17" height="15" viewBox="0 0 17 15" fill="none" xmlns="http://www.w3.org/2000/svg">
-								<path d="M15.75 7.72559L0.75 7.72559" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-								<path d="M9.7002 1.70124L15.7502 7.72524L9.7002 13.7502" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-							</svg></button>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
-	<!-- end war -->
-	<!-- anime -->
-	<!-- videos -->
-	<!-- <section class="section">
-		<div class="container">
-			<div class="row">
-				<div class="col-12">
-					<h2 class="section__title"><b>Flix</b>TV Originals</h2>
-					<p class="section__text">Celebrity interviews, trending entertainment stories, and expert analysis.</p>
-				</div>
-
-				<div class="col-12">
-					<div class="section__carousel-wrap">
-						<div class="section__interview owl-carousel" id="flixtv">
-						<?php foreach ($war->result() as $row) { ?>
-							<div class="interview">
-								<a href="<?= site_url('details/').$row->id; ?>" class="interview__cover">
-									<img src="<?php echo base_url() . 'assets/movies/' . $row->picture; ?>" alt="">
-									<span>
-										<svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M11 1C16.5228 1 21 5.47716 21 11C21 16.5228 16.5228 21 11 21C5.47716 21 1 16.5228 1 11C1 5.47716 5.47716 1 11 1Z" stroke-linecap="round" stroke-linejoin="round"/><path fill-rule="evenodd" clip-rule="evenodd" d="M14.0501 11.4669C13.3211 12.2529 11.3371 13.5829 10.3221 14.0099C10.1601 14.0779 9.74711 14.2219 9.65811 14.2239C9.46911 14.2299 9.28711 14.1239 9.19911 13.9539C9.16511 13.8879 9.06511 13.4569 9.03311 13.2649C8.93811 12.6809 8.88911 11.7739 8.89011 10.8619C8.88911 9.90489 8.94211 8.95489 9.04811 8.37689C9.07611 8.22089 9.15811 7.86189 9.18211 7.80389C9.22711 7.69589 9.30911 7.61089 9.40811 7.55789C9.48411 7.51689 9.57111 7.49489 9.65811 7.49789C9.74711 7.49989 10.1091 7.62689 10.2331 7.67589C11.2111 8.05589 13.2801 9.43389 14.0401 10.2439C14.1081 10.3169 14.2951 10.5129 14.3261 10.5529C14.3971 10.6429 14.4321 10.7519 14.4321 10.8619C14.4321 10.9639 14.4011 11.0679 14.3371 11.1549C14.3041 11.1999 14.1131 11.3999 14.0501 11.4669Z" stroke-linecap="round" stroke-linejoin="round"/></svg> 5:33
-									</span>
-								</a>
-								<h3 class="interview__title"><a href="interview.html">What Was Ben Affleck Planning for His Unmade 'Batman' Film?</a></h3>
-								<?php } ?>
+					<div class="videos">
+						<div class="slider-for-2 video-ft">
+							<div>
+								<iframe class="item-video" src="" data-src="https://www.youtube.com/embed/1Q8fG0TtVAY"></iframe>
+							</div>
+							<div>
+								<iframe class="item-video" src="" data-src="https://www.youtube.com/embed/w0qQkSuWOS8"></iframe>
+							</div>
+							<div>
+								<iframe class="item-video" src="" data-src="https://www.youtube.com/embed/44LdLqgOpjo"></iframe>
+							</div>
+							<div>
+								<iframe class="item-video" src="" data-src="https://www.youtube.com/embed/gbug3zTm3Ws"></iframe>
+							</div>
+							<div>
+								<iframe class="item-video" src="" data-src="https://www.youtube.com/embed/e3Nl_TCQXuw"></iframe>
+							</div>
+							<div>
+								<iframe class="item-video" src="" data-src="https://www.youtube.com/embed/NxhEZG0k9_w"></iframe>
 							</div>
 
-						<button class="section__nav section__nav--interview section__nav--prev" data-nav="#flixtv" type="button"><svg width="17" height="15" viewBox="0 0 17 15" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1.25 7.72559L16.25 7.72559" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M7.2998 1.70124L1.2498 7.72524L7.2998 13.7502" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
-						<button class="section__nav section__nav--interview section__nav--next" data-nav="#flixtv" type="button"><svg width="17" height="15" viewBox="0 0 17 15" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M15.75 7.72559L0.75 7.72559" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M9.7002 1.70124L15.7502 7.72524L9.7002 13.7502" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+
+						</div>
+						<div class="slider-nav-2 thumb-ft">
+							<div class="item">
+								<div class="trailer-img">
+									<img src="images/uploads/trailer7.jpg" alt="photo by Barn Images" width="4096" height="2737">
+								</div>
+								<div class="trailer-infor">
+									<h4 class="desc">Wonder Woman</h4>
+									<p>2:30</p>
+								</div>
+							</div>
+							<div class="item">
+								<div class="trailer-img">
+									<img src="images/uploads/trailer2.jpg" alt="photo by Barn Images" width="350" height="200">
+								</div>
+								<div class="trailer-infor">
+									<h4 class="desc">Oblivion: Official Teaser Trailer</h4>
+									<p>2:37</p>
+								</div>
+							</div>
+							<div class="item">
+								<div class="trailer-img">
+									<img src="images/uploads/trailer6.jpg" alt="photo by Joshua Earle">
+								</div>
+								<div class="trailer-infor">
+									<h4 class="desc">Exclusive Interview: Skull Island</h4>
+									<p>2:44</p>
+								</div>
+							</div>
+							<div class="item">
+								<div class="trailer-img">
+									<img src="images/uploads/trailer3.png" alt="photo by Alexander Dimitrov" width="100" height="56">
+								</div>
+								<div class="trailer-infor">
+									<h4 class="desc">Logan: Director James Mangold Interview</h4>
+									<p>2:43</p>
+								</div>
+							</div>
+							<div class="item">
+								<div class="trailer-img">
+									<img src="images/uploads/trailer4.png" alt="photo by Wojciech Szaturski" width="100" height="56">
+								</div>
+								<div class="trailer-infor">
+									<h4 class="desc">Beauty and the Beast: Official Teaser Trailer 2</h4>
+									<p>2: 32</p>
+								</div>
+							</div>
+							<div class="item">
+								<div class="trailer-img">
+									<img src="images/uploads/trailer5.jpg" alt="photo by Wojciech Szaturski" width="360" height="189">
+								</div>
+								<div class="trailer-infor">
+									<h4 class="desc">Fast&Furious 8</h4>
+									<p>3:11</p>
+								</div>
+							</div>
+
+						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-	</section> -->
-	<!-- end videos -->
+	</div>
+	<!-- latest new v1 section-->
+	<div class="latestnew">
+		<div class="container">
+			<div class="row ipad-width">
+				<div class="col-md-8">
+					<div class="ads">
+						<img src="images/uploads/ads2.png" alt="" width="728" height="106">
+					</div>
+					<div class="title-hd">
+						<h2>Latest news</h2>
+					</div>
+					<div class="tabs">
+						<ul class="tab-links-3">
+							<li class="active"><a href="#tab31">#Movies </a></li>
+							<li><a href="#tab32"> #TV Shows </a></li>
+							<li><a href="#tab33"> # Celebs</a></li>
+						</ul>
+						<div class="tab-content">
+							<div id="tab31" class="tab active">
+								<div class="row">
+									<div class="blog-item-style-1">
+										<img src="images/uploads/blog-it1.jpg" alt="" width="170" height="250">
+										<div class="blog-it-infor">
+											<h3><a href="#">Brie Larson to play first female white house candidate Victoria Woodull in Amazon film</a></h3>
+											<span class="time">13 hours ago</span>
+											<p>Exclusive: <span>Amazon Studios </span>has acquired Victoria Woodhull, with Oscar winning Room star <span>Brie Larson</span> polsed to produce, and play the first female candidate for the presidency of the United States. Amazon bought it in a pitch package deal. <span> Ben Kopit</span>, who wrote the Warner Bros film <span>Libertine</span> that has...</p>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div id="tab32" class="tab">
+								<div class="row">
+									<div class="blog-item-style-1">
+										<img src="images/uploads/blog-it2.jpg" alt="" width="170" height="250">
+										<div class="blog-it-infor">
+											<h3><a href="#">Tab 2</a></h3>
+											<span class="time">13 hours ago</span>
+											<p>Exclusive: <span>Amazon Studios </span>has acquired Victoria Woodhull, with Oscar winning Room star <span>Brie Larson</span> polsed to produce, and play the first female candidate for the presidency of the United States. Amazon bought it in a pitch package deal. <span> Ben Kopit</span>, who wrote the Warner Bros film <span>Libertine</span> that has...</p>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div id="tab33" class="tab">
+								<div class="row">
+									<div class="blog-item-style-1">
+										<img src="images/uploads/blog-it1.jpg" alt="" width="170" height="250">
+										<div class="blog-it-infor">
+											<h3><a href="#">Tab 3</a></h3>
+											<span class="time">13 hours ago</span>
+											<p>Exclusive: <span>Amazon Studios </span>has acquired Victoria Woodhull, with Oscar winning Room star <span>Brie Larson</span> polsed to produce, and play the first female candidate for the presidency of the United States. Amazon bought it in a pitch package deal. <span> Ben Kopit</span>, who wrote the Warner Bros film <span>Libertine</span> that has...</p>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="morenew">
+						<div class="title-hd">
+							<h3>More news on Blockbuster</h3>
+							<a href="#" class="viewall">See all Movies news<i class="ion-ios-arrow-right"></i></a>
+						</div>
+						<div class="more-items">
+							<div class="left">
+								<div class="more-it">
+									<h6><a href="#">Michael Shannon Frontrunner to play Cable in “Deadpool 2”</a></h6>
+									<span class="time">13 hours ago</span>
+								</div>
+								<div class="more-it">
+									<h6><a href="#">French cannibal horror “Raw” inspires L.A. theater to hand out “Barf Bags”</a></h6>
+
+									<span class="time">13 hours ago</span>
+								</div>
+							</div>
+							<div class="right">
+								<div class="more-it">
+									<h6><a href="#">Laura Dern in talks to join Justin Kelly’s biopic “JT Leroy”</a></h6>
+									<span class="time">13 hours ago</span>
+								</div>
+								<div class="more-it">
+									<h6><a href="#">China punishes more than 300 cinemas for box office cheating</a></h6>
+									<span class="time">13 hours ago</span>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-4">
+					<div class="sidebar">
+						<div class="sb-facebook sb-it">
+							<h4 class="sb-title">Find us on Facebook</h4>
+							<iframe src="" data-src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Fhaintheme%2F%3Ffref%3Dts&tabs=timeline&width=300&height=315px&small_header=true&adapt_container_width=false&hide_cover=false&show_facepile=true&appId" width="300" height="315" style="border:none;overflow:hidden"></iframe>
+						</div>
+						<div class="sb-twitter sb-it">
+							<h4 class="sb-title">Tweet to us</h4>
+							<div class="slick-tw">
+								<div class="tweet item" id="599202861751410688">
+								</div>
+								<div class="tweet item" id="297462728598122498">
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!--end of latest new v1 section-->

@@ -2,146 +2,220 @@
 defined('BASEPATH') or exit('No direct script access allowed');
 
 /**
- * @author      Maulana Rahman <maulana.code@gmail.com>
+ * @author  Maulana Rahman <maulana.code@gmail.com>
  */
 
 class Beranda extends CI_Controller
 {
-
 	public function __construct()
 	{
 		parent::__construct();
 		$this->load->model('Beranda_model');
+		$this->load->helper('url');
 	}
 
+	/** ==========================================================
+	 *  HALAMAN BERANDA
+	 *  ========================================================== */
 	public function index()
 	{
-		$title_head = "Beranda";
-		$data_gambar['title'] = $title_head;
-		//new movies
-		$this->db->where('year', date('Y', now()));
-		$data_gambar['new_movies'] = $this->db->get('movies');
-		//popular movies
-		$this->db->order_by('rating', 'desc');
-		$data_gambar['popular_movies'] = $this->db->get('movies');
-		//all movies
-		$data_gambar['movies'] = $this->db->get('movies');
-		// Action Movies
-		$this->db->Select('movies.*');
-		$this->db->where('category_id', 1);
-		$this->db->join('movie_categories', 'movie_categories.movie_id = movies.id', 'left');
-		$data_gambar['action_movies'] = $this->db->get('movies');
-		// Drama
-		$this->db->where('is_drama_korea', 1);
-		$data_gambar['drama_korea'] = $this->db->get('movies');
-		// War
-		$this->db->Select('movies.*');
-		$this->db->where('category_id', 15);
-		$this->db->join('movie_categories', 'movie_categories.movie_id = movies.id', 'left');
-		$data_gambar['war'] = $this->db->get('movies');
-		// Romance
-		$this->db->Select('movies.*');
-		$this->db->where('category_id', 21);
-		$this->db->join('movie_categories', 'movie_categories.movie_id = movies.id', 'left');
-		$data_gambar['romance'] = $this->db->get('movies');
-		//Film Indonesia
-		$this->db->where('is_indonesian', 1);
-		$data_gambar['film_indonesia'] = $this->db->get('movies');
-		//Featured
-		$this->db->where('is_featured', 1);
-		$data_gambar['featured1'] = $this->db->get('movies');
-		//Featured
-		$this->db->where('is_featured', 2);
-		$data_gambar['featured2'] = $this->db->get('movies');
-		//Featured
-		$this->db->where('is_featured', 3);
-		$data_gambar['featured3'] = $this->db->get('movies');
-		//Featured
-		$this->db->where('is_featured', 4);
-		$data_gambar['featured4'] = $this->db->get('movies');
+		$data = [
+			'title' => 'Beranda'
+		];
+
+		// New Movies (tahun sekarang)
+		$data['new_movies'] = $this->db
+			->select('movies.*, movie_categories.category_id, categories.name AS category_name')
+			->join('movie_categories', 'movie_categories.movie_id = movies.id', 'left')
+			->join('categories', 'categories.id = movie_categories.category_id', 'left')
+			->where('movies.year', date('Y'))
+			->group_by('movies.id') // biar gak duplikat kalau film punya multi kategori
+			->get('movies')
+			->result();
 
 
-		/*DATA*/
-		// disini dikasih datanya
+		// Tambahkan di dalam Beranda@index()
 
-		/*END DATA*/
+		// POPULAR
+		$data['popular_movies'] = $this->db
+			->order_by('rating', 'DESC')
+			->limit(10)
+			->get('movies')
+			->result();
+		$this->db->reset_query();
 
-		//kalo nama varnya data_gambar, diatas harusnya data_gambar juga, bukan $head
-		//lanjutkan
-		$this->load->view('beranda', $data_gambar);
+		// COMING SOON — pakai year > sekarang (kalau tidak ada release_date)
+		$data['coming_soon'] = $this->db
+			->where('release_date >', date('Y-m-d'))
+			->order_by('release_date', 'ASC')
+			->limit(10)
+			->get('movies')
+			->result();
+		$this->db->reset_query();
+
+		// TOP RATED
+		$data['top_rated'] = $this->db
+			->order_by('rating', 'DESC')
+			->limit(10)
+			->get('movies')
+			->result();
+		$this->db->reset_query();
+
+		// MOST REVIEWED (jika ada tabel reviews)
+		$data['most_reviewed'] = $this->db
+			->select('movies.*, COUNT(reviews.id) as review_count')
+			->join('reviews', 'reviews.movie_id = movies.id', 'left')
+			->group_by('movies.id')
+			->order_by('review_count', 'DESC')
+			->limit(10)
+			->get('movies')
+			->result();
+
+
+
+		// Load views
+		$this->load->view('header', $data);
+		$this->load->view('beranda', $data);
 		$this->load->view('footer');
 	}
 
+	/** ==========================================================
+	 *  HALAMAN DETAILS FILM
+	 *  ========================================================== */
 	public function details($id)
 	{
-		$data['title'] = "Details Movies";
-		$data['movies'] = $this->Beranda_model->getdetails($id);
-		foreach ($this->Beranda_model->getdetails($id) as $key => $value) {
-			$data['title'] = $value->title;
+		$details = $this->Beranda_model->getdetails($id);
+		if (empty($details)) {
+			show_404();
 		}
-		
-		$this->db->where('is_featured', 1);
-		$this->db->or_where('is_featured', 2);
-		$this->db->or_where('is_featured', 3);
-		$this->db->or_where('is_featured', 4);
-		$data['featured'] = $this->db->get('movies');
 
+		$data = [
+			'title'     => $details[0]->title ?? 'Details Movie',
+			'movies'    => $details,
+			'featured'  => $this->db
+				->where_in('is_featured', [1, 2, 3, 4])
+				->get('movies')->result()
+		];
+
+		$this->load->view('header', $data);
 		$this->load->view('details', $data);
 		$this->load->view('footer');
 	}
+
+	/** ==========================================================
+	 *  HALAMAN KATEGORI
+	 *  ========================================================== */
 	public function categories($id)
 	{
-		$data['title'] = "Category Movie";
-		$this->db->where('id', $id);
-		$data['category'] = $this->db->get('categories')->row();
-		$data['movies'] = $this->Beranda_model->getcategories($id);
+		$category = $this->db->where('id', $id)->get('categories')->row();
+		if (!$category) {
+			show_404();
+		}
 
+		$data = [
+			'title'     => 'Category: ' . $category->name,
+			'category'  => $category,
+			'movies'    => $this->Beranda_model->getcategories($id)
+		];
+
+		$this->load->view('header', $data);
 		$this->load->view('categories', $data);
 		$this->load->view('footer');
 	}
-	public function years($id)
-	{
-		$data['title'] = "Year ".$id;
-		$data['year'] = $id;
-		
-		$this->db->where('year', $id);
-		$data['movies'] = $this->db->get('movies')->result();
 
+	/** ==========================================================
+	 *  HALAMAN BERDASARKAN TAHUN
+	 *  ========================================================== */
+	public function years($year)
+	{
+		$data = [
+			'title' => "Movies from {$year}",
+			'year'  => $year,
+			'movies' => $this->db
+				->where('year', $year)
+				->get('movies')->result()
+		];
+
+		$this->load->view('header', $data);
 		$this->load->view('years', $data);
 		$this->load->view('footer');
 	}
 
-	public function comment($id)
+	/** ==========================================================
+	 *  KOMENTAR
+	 *  ========================================================== */
+	public function comment($movie_id)
 	{
-		$data['title'] = "Details Comment";
-		$data['comments'] = $this->Beranda_model->getcomment($id);
+		$data = [
+			'title'     => 'Comments',
+			'comments'  => $this->Beranda_model->getcomment($movie_id)
+		];
+
+		$this->load->view('header', $data);
 		$this->load->view('details', $data);
+		$this->load->view('footer');
 	}
 
 	public function savecomment()
 	{
-		$insert = array(
-			'name' => $this->input->post('name'),
-			'comment' => $this->input->post('comment'),
-			'movie_id' => $this->input->post('movie_id'),
-		);
+		$insert = [
+			'name'      => $this->input->post('name', TRUE),
+			'comment'   => $this->input->post('comment', TRUE),
+			'movie_id'  => $this->input->post('movie_id', TRUE),
+		];
+
 		$this->db->insert('comments', $insert);
-		redirect('details/'.$this->input->post('movie_id'),'refresh');
+		redirect('details/' . $insert['movie_id']);
 	}
 
 	public function savereview()
 	{
-		$insert = array(
-			'name' => $this->input->post('name'),
-			'title' => $this->input->post('title'),
-			'rating' => $this->input->post('select'),
-			'review' => $this->input->post('text2'),
-			'movie_id' => $this->input->post('movie_id'),
-		);
+		$insert = [
+			'name'      => $this->input->post('name', TRUE),
+			'title'     => $this->input->post('title', TRUE),
+			'rating'    => $this->input->post('select', TRUE),
+			'review'    => $this->input->post('text2', TRUE),
+			'movie_id'  => $this->input->post('movie_id', TRUE),
+		];
+
 		$this->db->insert('reviews', $insert);
-		redirect('details/'.$this->input->post('movie_id'),'refresh');
+		redirect('details/' . $insert['movie_id']);
+	}
+
+	/** ==========================================================
+	 *  BOOKMARK TOGGLE DAN LIST
+	 *  ========================================================== */
+	public function toggle()
+	{
+		$user_id  = $this->session->userdata('user_id');
+		$movie_id = $this->input->post('movie_id', TRUE);
+
+		if (!$user_id) {
+			echo json_encode(['status' => 'error', 'msg' => 'Login required']);
+			return;
+		}
+
+		$result = $this->Beranda_model->toggleBookmark($user_id, $movie_id);
+		echo json_encode($result);
+	}
+
+	public function mybookmarks()
+	{
+		$user_id = $this->session->userdata('user_id');
+
+		if (!$user_id) {
+			redirect('login');
+		}
+
+		$data = [
+			'title'     => 'My Bookmarks',
+			'bookmarks' => $this->Beranda_model->getUserBookmarks($user_id)
+		];
+
+		$this->load->view('header', $data);
+		$this->load->view('my_bookmarks', $data);
+		$this->load->view('footer');
 	}
 }
 
-/* Location: ./application/modules/X/controllers/X.php */
-/* End of file X.php */
+/* End of file Beranda.php */
