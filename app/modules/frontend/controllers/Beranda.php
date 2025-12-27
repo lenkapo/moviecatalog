@@ -216,6 +216,98 @@ class Beranda extends CI_Controller
 		$this->load->view('my_bookmarks', $data);
 		$this->load->view('footer');
 	}
+
+	public function search()
+	{
+		$this->load->library('pagination');
+
+		// === Ambil parameter dari URL ===
+		$keyword = $this->input->get('q');
+		$type    = $this->input->get('type');
+		$limit   = $this->input->get('limit') ? (int)$this->input->get('limit') : 20;
+		$page    = $this->input->get('page') ? (int)$this->input->get('page') : 1;
+		$sort    = $this->input->get('sort') ?? 'rating';
+		$order   = strtolower($this->input->get('order') ?? 'desc'); // ASC atau DESC
+
+		// Pastikan hanya ASC/DESC
+		$order = ($order === 'asc') ? 'ASC' : 'DESC';
+
+		// === Hitung total data ===
+		if ($keyword) $this->db->like('title', $keyword);
+		if ($type == 'tv') {
+			$this->db->where('is_tv_show', 1);
+		} elseif ($type == 'movie') {
+			$this->db->where('is_tv_show', 0);
+		}
+		$total_rows = $this->db->count_all_results('movies');
+
+		// === Hitung offset ===
+		$offset = ($page - 1) * $limit;
+
+		// === Query data utama ===
+		if ($keyword) $this->db->like('title', $keyword);
+		if ($type == 'tv') {
+			$this->db->where('is_tv_show', 1);
+		} elseif ($type == 'movie') {
+			$this->db->where('is_tv_show', 0);
+		}
+
+		// Urutan
+		switch ($sort) {
+			case 'rating':
+				$this->db->order_by('rating', $order);
+				break;
+			case 'date':
+				$this->db->order_by('release_date', $order);
+				break;
+			case 'title':
+				$this->db->order_by('title', $order);
+				break;
+			default:
+				$this->db->order_by('rating', 'DESC');
+				break;
+		}
+
+		$this->db->limit($limit, $offset);
+		$data['movies'] = $this->db->get('movies')->result();
+
+		// === Pagination config ===
+		$config['base_url'] = site_url('search?q=' . urlencode($keyword) . '&type=' . $type . '&limit=' . $limit . '&sort=' . $sort . '&order=' . strtolower($order));
+		$config['total_rows'] = $total_rows;
+		$config['per_page'] = $limit;
+		$config['use_page_numbers'] = TRUE;
+		$config['page_query_string'] = TRUE;
+		$config['query_string_segment'] = 'page';
+		$config['reuse_query_string'] = TRUE;
+
+		// Tampilan pagination
+		$config['full_tag_open'] = '<div class="pagination2">';
+		$config['full_tag_close'] = '</div>';
+		$config['num_tag_open'] = '<a href="#">';
+		$config['num_tag_close'] = '</a>';
+		$config['cur_tag_open'] = '<a class="active" href="#">';
+		$config['cur_tag_close'] = '</a>';
+		$config['next_link'] = '<i class="ion-arrow-right-b"></i>';
+		$config['prev_link'] = '<i class="ion-arrow-left-b"></i>';
+
+		$this->pagination->initialize($config);
+
+		$data['pagination'] = $this->pagination->create_links();
+
+		// === Hitung halaman saat ini & total ===
+		$total_pages = ($total_rows > 0) ? ceil($total_rows / $limit) : 1;
+		$data['page_info'] = "<span>Page {$page} of {$total_pages}:</span>";
+
+		// === Kirim data ke view ===
+		$data['title'] = "Search Results for \"$keyword\"";
+		$data['sort'] = $sort;
+		$data['order'] = strtolower($order);
+		$data['limit'] = $limit;
+
+		$this->load->view('header', $data);
+		$this->load->view('search_results', $data);
+		$this->load->view('footer');
+	}
 }
 
 /* End of file Beranda.php */

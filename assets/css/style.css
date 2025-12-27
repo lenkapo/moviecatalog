@@ -5572,7 +5572,7 @@ ul {
 }
 
 .topbar-filter .pagination2 {
-  padding-left: 100px;
+  padding-left: 10px;
 }
 
 @media (max-width: 767px) {

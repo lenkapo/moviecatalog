@@ -1,5 +1,5 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
 /*
 | -------------------------------------------------------------------------
@@ -51,6 +51,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 */
 $route['default_controller'] = 'frontend/Beranda';
 $route['/'] = 'frontend/Beranda/index';
+
+// === Route untuk search ===
+$route['search'] = 'frontend/Beranda/search';
+
+
+
+
 $route['details/(:any)'] = 'frontend/Beranda/details/$1';
 $route['categories/(:any)'] = 'frontend/Beranda/categories/$1';
 $route['years/(:any)'] = 'frontend/Beranda/years/$1';
@@ -58,4 +65,3 @@ $route['years/(:any)'] = 'frontend/Beranda/years/$1';
 $route['recovery_password'] = 'forgot_password/recov/';
 $route['404_override'] = 'dashboard/error404/';
 $route['translate_uri_dashes'] = FALSE;
-

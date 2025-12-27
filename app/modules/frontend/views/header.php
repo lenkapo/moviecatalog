@@ -20,16 +20,7 @@
 						<li class="hidden">
 							<a href="#page-top"></a>
 						</li>
-						<li class="dropdown first">
-							<a class="btn btn-default dropdown-toggle lv1" data-toggle="dropdown">
-								Home <i class="fa fa-angle-down" aria-hidden="true"></i>
-							</a>
-							<ul class="dropdown-menu level1">
-								<li><a href="index.html">Home 01</a></li>
-								<li><a href="homev2.html">Home 02</a></li>
-								<li><a href="homev3.html">Home 03</a></li>
-							</ul>
-						</li>
+						<li><a href="#">Home</a></li>
 						<li class="dropdown first">
 							<a class="btn btn-default dropdown-toggle lv1" data-toggle="dropdown" data-hover="dropdown">
 								movies<i class="fa fa-angle-down" aria-hidden="true"></i>
@@ -100,13 +91,16 @@
 			</nav>
 
 			<!-- top search form -->
-			<div class="top-search">
-				<select>
-					<option value="united">TV show</option>
-					<option value="saab">Others</option>
-				</select>
-				<input type="text" placeholder="Search for a movie, TV Show or celebrity that you are looking for">
-			</div>
+			<form action="<?= site_url('search') ?>" method="get">
+				<div class="top-search">
+					<select name="type">
+						<option value="movie">Movies</option>
+						<option value="tv">TV Shows</option>
+					</select>
+					<input type="text" name="q" placeholder="Search for a movie, TV show, or celebrity..." required>
+
+				</div>
+			</form>
 		</div>
 	</header>
 	<!-- END | Header -->

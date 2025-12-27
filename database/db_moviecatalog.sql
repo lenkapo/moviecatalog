@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.2
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 01, 2023 at 03:31 AM
--- Server version: 10.4.14-MariaDB
--- PHP Version: 7.4.10
+-- Generation Time: Dec 27, 2025 at 11:03 AM
+-- Server version: 10.4.27-MariaDB
+-- PHP Version: 7.4.33
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -31,7 +31,7 @@ CREATE TABLE `alus_g` (
   `id` mediumint(8) UNSIGNED NOT NULL,
   `name` varchar(50) NOT NULL,
   `description` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci ROW_FORMAT=COMPACT;
 
 --
 -- Dumping data for table `alus_g`
@@ -54,7 +54,7 @@ CREATE TABLE `alus_gd` (
   `table_is_filter` int(11) DEFAULT NULL,
   `table_where` varchar(50) DEFAULT NULL,
   `table_filter` varchar(1000) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci ROW_FORMAT=COMPACT;
 
 --
 -- Dumping data for table `alus_gd`
@@ -97,7 +97,7 @@ CREATE TABLE `alus_la` (
   `ip_address` varchar(15) NOT NULL,
   `login` varchar(100) NOT NULL,
   `time` int(10) UNSIGNED DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci ROW_FORMAT=COMPACT;
 
 -- --------------------------------------------------------
 
@@ -113,7 +113,7 @@ CREATE TABLE `alus_mg` (
   `menu_target` varchar(255) DEFAULT NULL,
   `menu_icon` varchar(25) DEFAULT NULL,
   `order_num` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci ROW_FORMAT=COMPACT;
 
 --
 -- Dumping data for table `alus_mg`
@@ -147,7 +147,7 @@ CREATE TABLE `alus_mga` (
   `pev` datetime DEFAULT NULL,
   `psed` datetime DEFAULT NULL,
   `peed` datetime DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci ROW_FORMAT=COMPACT;
 
 --
 -- Dumping data for table `alus_mga`
@@ -204,14 +204,14 @@ CREATE TABLE `alus_u` (
   `bpd_id` int(11) DEFAULT NULL,
   `bpd_id_2` int(11) DEFAULT NULL,
   `staff_pmk_id` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci ROW_FORMAT=COMPACT;
 
 --
 -- Dumping data for table `alus_u`
 --
 
 INSERT INTO `alus_u` (`id`, `username`, `job_title`, `abc`, `ip_address`, `ghi`, `def`, `mno`, `jkl`, `stu`, `pqr`, `created_on`, `last_login`, `active`, `first_name`, `last_name`, `company`, `phone`, `ht`, `picture`, `mdo_id`, `mos_id`, `grup_type`, `bpd_id`, `bpd_id_2`, `staff_pmk_id`) VALUES
-(64, 'admins', 'admins', 'MTIzNDU2Nzg5MDEyMzQ1Nvqvv5U+5Kixew57njDPeg==', '::1', '$2y$08$.sbsuXatbF/d4/RvUy77GeeX/Nw48XoXXS/3Xurj7O/ujoQu3KGzK', 'xEfWFClsAdO4BnNm', '', '', NULL, '', 1469523580, 1675213908, 1, 'User', '', '', '11', 0, '1496118042.jpg', NULL, NULL, NULL, NULL, NULL, NULL),
+(64, 'admins', 'admins', 'MTIzNDU2Nzg5MDEyMzQ1Nvqvv5U+5Kixew57njDPeg==', '::1', '$2y$08$5vkhkFZ3iwpu/GcpsuKvO.1RxG.QilBBgnJziPYsLQToJCDaAfE.i', 'xEfWFClsAdO4BnNm', '', NULL, 1766803387, '', 1469523580, 1766803398, 1, 'User', '', '', '11', 0, '1496118042.jpg', NULL, NULL, NULL, NULL, NULL, NULL),
 (65, 'BAGIAN PERLENGKAPAN', 'BAGIAN PERLENGKAPAN', 'MTIzNDU2Nzg5MDEyMzQ1NsGuoJM/yqy8eAN68DTNdlID3W0pjA==', '::1', '$2y$08$JoKZ4fv6BkH5WTWLwW9IfulZAbwPRhawSu5/basXlOukNzemXJuqS', 'Ih49EoG2nF0Zt38O', NULL, NULL, NULL, NULL, 1542868077, 1550670091, 1, 'BAGIAN PERLENGKAPAN', NULL, NULL, '0', 0, 'avatar_default.png', NULL, 1, NULL, NULL, NULL, NULL),
 (66, 'DINAS PENDIDIKAN', 'DINAS PENDIDIKAN', 'MTIzNDU2Nzg5MDEyMzQ1Nv2quZ4/3a+0fSdy3TLJexUMnGM=', '::1', '$2y$08$VUKn/N/Oz3h/8IB7somj3ODzqJ3cGYVnLbUw/QESB9MVhCV.zeInG', 'Qoc9aAIiYkGjg9IZ', NULL, NULL, NULL, NULL, 1542868087, 1550991198, 1, 'DINAS PENDIDIKAN', '', NULL, '0', 0, 'avatar_default.png', NULL, 2, NULL, NULL, NULL, NULL),
 (67, 'KECAMATAN KAYAN HULU', 'KECAMATAN KAYAN HULU', 'MTIzNDU2Nzg5MDEyMzQ1Nva5/Iwiy6i5IlBV1z7BfldBkGEr', '::1', '$2y$08$amSFXmE4w705SSYY562IM.wr5fvtERPp7sXIFyi04MgZVY2rEhMXS', 'rrptJbn3YVDGJGOF', NULL, NULL, NULL, NULL, 1542868107, 1549440969, 1, 'KECAMATAN KAYAN HULU', NULL, NULL, '0', 0, 'avatar_default.png', NULL, 3, NULL, NULL, NULL, NULL),
@@ -280,7 +280,7 @@ CREATE TABLE `alus_ug` (
   `id` int(10) UNSIGNED NOT NULL,
   `user_id` int(10) UNSIGNED NOT NULL,
   `group_id` mediumint(8) UNSIGNED NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci ROW_FORMAT=COMPACT;
 
 --
 -- Dumping data for table `alus_ug`
@@ -305,7 +305,7 @@ CREATE TABLE `categories` (
   `updated_at` timestamp NULL DEFAULT NULL ON UPDATE current_timestamp(),
   `created_at` timestamp NULL DEFAULT current_timestamp(),
   `created_by_user_id` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci ROW_FORMAT=COMPACT;
 
 --
 -- Dumping data for table `categories`
@@ -356,7 +356,7 @@ CREATE TABLE `comments` (
   `created_at` timestamp NULL DEFAULT current_timestamp(),
   `comment` text DEFAULT NULL,
   `movie_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci ROW_FORMAT=COMPACT;
 
 --
 -- Dumping data for table `comments`
@@ -366,7 +366,8 @@ INSERT INTO `comments` (`id`, `name`, `created_at`, `comment`, `movie_id`) VALUE
 (2, 'Youngsta', '2023-01-21 09:49:08', 'Nice film good', 6),
 (3, 'Codet', '2023-01-21 10:13:58', 'Good\r\n', 6),
 (4, 'youngsta', '2023-01-27 11:57:02', 'bagus filmnya\r\n', 13),
-(5, 'youngsta ', '2023-01-27 12:25:31', 'halo gud film', 7);
+(5, 'youngsta ', '2023-01-27 12:25:31', 'halo gud film', 7),
+(6, 'LUQMAN ALY RAZAK', '2025-12-24 09:40:49', 'Bagus', 14);
 
 -- --------------------------------------------------------
 
@@ -379,6 +380,7 @@ CREATE TABLE `movies` (
   `title` text DEFAULT NULL,
   `rating` float DEFAULT NULL,
   `year` int(11) DEFAULT NULL,
+  `release_date` date DEFAULT NULL,
   `duration` varchar(255) DEFAULT NULL,
   `age` int(11) DEFAULT NULL,
   `description` text DEFAULT NULL,
@@ -390,30 +392,33 @@ CREATE TABLE `movies` (
   `created_by_user_id` int(11) DEFAULT NULL,
   `is_featured` int(11) NOT NULL,
   `is_indonesian` int(11) NOT NULL,
-  `is_drama_korea` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT;
+  `is_drama_korea` int(11) NOT NULL,
+  `is_coming_soon` tinyint(1) DEFAULT 0,
+  `is_tv_show` tinyint(1) DEFAULT 0
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci ROW_FORMAT=COMPACT;
 
 --
 -- Dumping data for table `movies`
 --
 
-INSERT INTO `movies` (`id`, `title`, `rating`, `year`, `duration`, `age`, `description`, `file_movie`, `picture`, `link_trailer`, `updated_at`, `created_at`, `created_by_user_id`, `is_featured`, `is_indonesian`, `is_drama_korea`) VALUES
-(7, 'There’s Something Wrong with the Children (2023)', 6.3, 2023, '2jam 30menit', 18, 'Margaret and Ben take a weekend trip with longtime friends Ellie and Thomas and their two young children. Eventually, Ben begins to suspect something supernatural is occurring when the kids behave strangely after disappearing into the woods overnight.', '167454331788.mp4', '167454830588.jpg', '', '2023-01-24 08:18:26', '2023-01-20 07:12:37', NULL, 2, 0, 0),
-(8, 'Detective Knight: Redemption (2022)', 4.8, 2022, '1 Jam 33 Menit', 18, 'In custody in New York, Detective James Knight finds himself in the middle of a jailbreak led by The Christmas Bomber, a brutal fanatic whose Santa Claus disciples are terrorizing the city. With the promised return of his badge in exchange for taking out the terrorists, the steely-eyed Knight doles out mercy for the just…and merciless justice for all the rest.', '167454724629.mp4', '167454859023.jpg', '', '2023-01-25 10:31:00', '2023-01-20 07:37:09', NULL, 3, 0, 0),
-(9, 'Money Heist: Korea – Joint Economic Area (2022)', 9.1, 2022, '', 0, 'Synopsis\r\n??? ?: ?????? – Disguised under the shadows of a mask, a crew of desperados band together under the leadership of a criminal mastermind known only as “The Professor” to pull off the biggest heist Korea has ever seen.', NULL, '167454997346.jpg', '', '2023-01-25 10:31:04', '2023-01-20 07:37:57', NULL, 4, 0, 0),
-(11, 'The Price We Pay (2023)', 5.3, 2023, '1Jam 25Menit', 18, 'After a pawn shop robbery goes askew, two criminals take refuge at a remote farmhouse to try to let the heat die down, but find something much more menacing.', '167446640621.mp4', '167454877764.jpg', '', '2023-01-31 02:26:29', '2023-01-23 09:33:27', NULL, 2, 0, 0),
-(12, 'Ghosts of War (2020)', 9.2, 2020, '94 Min', 14, 'A group of World War II American soldiers encounter a supernatural enemy as they occupy a French castle previously under Nazi control.', NULL, '167464270549.jfif', '', '2023-01-31 02:25:14', '2023-01-25 10:31:45', NULL, 1, 0, 0),
-(13, '365 Days (2020)', 7.6, 2022, '', 18, 'Laura, in order to save her relationship from falling apart, goes to Sicily, where she meets Massimo. A dangerous man, the head of a mafia family, kidnaps her and gives 365 days to love him.', NULL, '167464281696.jpg', '', '2023-01-31 02:26:14', '2023-01-25 10:33:29', NULL, 1, 0, 0),
-(14, 'M3GAN (2022)', 8.4, 2022, '102 Min', 18, 'A brilliant toy company roboticist uses artificial intelligence to develop M3GAN, a life-like doll programmed to emotionally bond with her newly orphaned niece. But when the doll’s programming works too well, she becomes overprotective of her new friend with terrifying results.', '167505408880.mp4', '167505408880.jpg', '', NULL, '2023-01-30 04:48:12', NULL, 1, 0, 0),
-(15, 'Hello World (2019)', 9.3, 2019, '98 Min', 0, 'A shy high schooler in Kyoto meets a man claiming to be his future self, who tells him he’s hacked into the past to save their first love.', '167508325269.mp4', '167508325269.jpg', '', '2023-01-30 13:01:35', '2023-01-30 12:54:13', NULL, 2, 0, 0),
-(16, 'The Last of Us (2023)', 9.5, 2023, '60 Min', 18, 'Twenty years after modern civilization has been destroyed. Joel, a hardened survivor, is hired to smuggle Ellie, a 14-year-old girl, out of an oppressive quarantine zone. What starts as a small job soon becomes a brutal, heartbreaking journey, as they both must traverse the U.S. and depend on each other for survival.', '167512810628.mp4', '167512810628.jpg', '', NULL, '2023-01-31 01:21:47', NULL, 1, 0, 0),
-(17, 'Vikings: Valhalla (2022)', 9.3, 2022, '51 Min', 13, 'In this sequel to “Vikings,” a hundred years have passed and a new generation of legendary heroes arises to forge its own destiny — and make history.', '167512956769.mp4', '167512956769.jpg', '', '2023-01-31 10:38:32', '2023-01-31 01:46:08', NULL, 1, 0, 0),
-(18, 'The Old Way (2023)', 8.6, 2023, '95 Min', 18, 'An old gunslinger and his daughter must face the consequences of his past, when the son of a man he murdered years ago arrives to take his revenge.', '167515286337.mp4', '167515286337.jpg', '', NULL, '2023-01-31 08:14:24', NULL, 1, 0, 0),
-(19, 'Hidayah', 8.3, 2023, '92 Min', 13, 'Di tengah imannya yang tengah goyah, BAHRI (Ajil Ditto), seorang ustadz muda, berusaha mengubur masa lalunya dengan bekerja di kota. Hingga suatu ketika, sahabat Bahri, HASAN, datang dari kampung untuk meminta tolong. Desa Mekarwangi tempat Bahri tumbuh dan berasal, mengalami gangguan gaib yang mengusik kedamaian kampung, yang dipercaya disebabkan oleh RATNA (Givina), teman lama Bahri. Ratna sakit keras dan menderita, namun tak kunjung menemui ajal. Teriakan kesakitan Ratna menghantui kampung tiap malam, disertai kemunculan sosok gaib yang mengganggu warga. Bahri kembali ke Desa Mekarwangi, dan mendapati bahwa bahaya yang harus ia hadapi lebih besar dari yang ia duga. Bahkan sesudah Ratna wafat, gangguan gaib malah semakin parah, hingga merenggut nyawa warga kampung. Bahri dituding bertanggung jawab atas itu semua, dan masa lalu Bahri sebagai narapidana terbongkar, membuat warga Mekarwangi mengusirnya. Demi menyelamatkan diri dan kampungnya, Bahri tidak punya pilihan selain meraih kembali hidayah dan memperteguh imannya.', NULL, '167515577368.jpg', '', '2023-01-31 09:15:48', '2023-01-31 09:02:54', NULL, 4, 1, 0),
-(20, 'Transfusion (2023)', 8.9, 2023, '105 Min', 18, 'A former Special Forces operative thrust into the criminal underworld to keep his only son from being taken away from him.', '167516108225.mp4', '167516108225.jpg', '', '2023-01-31 11:06:51', '2023-01-31 10:31:22', NULL, 3, 0, 0),
-(21, 'Kokdu: Season of Deity (2023)', 9.5, 2023, '80 Min', 18, 'A fantasy medical drama about a high-ranking grim reaper named Kkok Du, who is the only being to exist in the underworld. Every 99 years, the cold and cruel Kkok Du must take a break from his job in the underworld and spend 49 days in the mortal realm—and this time, he winds up inhabiting the body of the human Do Jin Woo. While living as Do Jin Woo, he meets Han Gye Jeol, a female doctor who has the mysterious ability to order Kkok Du around.', NULL, '167516298056.jpg', '', '2023-01-31 11:07:20', '2023-01-31 11:03:01', NULL, 4, 0, 1),
-(22, 'The Bait (2023)', 7.7, 2023, '80 Min', 18, 'A story that digs into the truth of past unsolved cases through the heinous current events. It is predicting the birth of a more realistic and new crime thriller based on a rare event.', '167521482854.mp4', '167521513702.jpg', '', '2023-02-01 01:32:17', '2023-02-01 01:27:08', NULL, 0, 0, 1),
-(23, 'The Bride of Habaek (2017)', 1, 2017, '80 Min', 18, 'Yoon So Ah is a pragmatic neuropsychiatrist who carries a tremendous financial burden to run her own practice. Her family has been tasked with serving Ha Baek, a reincarnated water god, for many generations, and So Ah is forced to do the same. Ha Baek starts to develop feelings for So Ah, but he has competition for her heart from Hoo Ye, the CEO of a resort company, who clashes with So Ah over a piece of land but then falls in love with her. Can a relationship between a mortal female and a god have a future?', NULL, '167521509950.jpg', '', '2023-02-01 01:37:28', '2023-02-01 01:31:39', NULL, 3, 0, 1);
+INSERT INTO `movies` (`id`, `title`, `rating`, `year`, `release_date`, `duration`, `age`, `description`, `file_movie`, `picture`, `link_trailer`, `updated_at`, `created_at`, `created_by_user_id`, `is_featured`, `is_indonesian`, `is_drama_korea`, `is_coming_soon`, `is_tv_show`) VALUES
+(7, 'There’s Something Wrong with the Children (2023)', 6.3, 2025, '2026-01-01', '2jam 30menit', 18, 'Margaret and Ben take a weekend trip with longtime friends Ellie and Thomas and their two young children. Eventually, Ben begins to suspect something supernatural is occurring when the kids behave strangely after disappearing into the woods overnight.', '167454331788.mp4', '167454830588.jpg', '', '2025-12-27 04:40:00', '2023-01-20 07:12:37', NULL, 2, 0, 0, 1, 0),
+(8, 'Detective Knight: Redemption (2022)', 4.8, 2025, '2025-12-28', '1 Jam 33 Menit', 18, 'In custody in New York, Detective James Knight finds himself in the middle of a jailbreak led by The Christmas Bomber, a brutal fanatic whose Santa Claus disciples are terrorizing the city. With the promised return of his badge in exchange for taking out the terrorists, the steely-eyed Knight doles out mercy for the just…and merciless justice for all the rest.', '167454724629.mp4', '167454859023.jpg', '', '2025-12-27 04:40:31', '2023-01-20 07:37:09', NULL, 3, 0, 0, 1, 0),
+(9, 'Money Heist: Korea – Joint Economic Area (2022)', 9.1, 2025, '2025-12-31', '', 0, 'Synopsis\r\n??? ?: ?????? – Disguised under the shadows of a mask, a crew of desperados band together under the leadership of a criminal mastermind known only as “The Professor” to pull off the biggest heist Korea has ever seen.', NULL, '167454997346.jpg', '', '2025-12-27 04:46:41', '2023-01-20 07:37:57', NULL, 4, 0, 0, 0, 0),
+(11, 'The Price We Pay (2023)', 5.3, 2023, '2025-12-31', '1Jam 25Menit', 18, 'After a pawn shop robbery goes askew, two criminals take refuge at a remote farmhouse to try to let the heat die down, but find something much more menacing.', '167446640621.mp4', '167454877764.jpg', '', '2025-12-27 04:46:59', '2023-01-23 09:33:27', NULL, 2, 0, 0, 0, 0),
+(12, 'Ghosts of War (2020)', 9.2, 2020, '2025-12-29', '94 Min', 14, 'A group of World War II American soldiers encounter a supernatural enemy as they occupy a French castle previously under Nazi control.', NULL, '167464270549.jfif', '', '2025-12-27 04:47:05', '2023-01-25 10:31:45', NULL, 1, 0, 0, 0, 0),
+(13, '365 Days (2020)', 7.6, 2022, NULL, '', 18, 'Laura, in order to save her relationship from falling apart, goes to Sicily, where she meets Massimo. A dangerous man, the head of a mafia family, kidnaps her and gives 365 days to love him.', NULL, '167464281696.jpg', '', '2023-01-31 02:26:14', '2023-01-25 10:33:29', NULL, 1, 0, 0, 0, 0),
+(14, 'M3GAN (2022)', 8.4, 2025, NULL, '102 Min', 18, 'A brilliant toy company roboticist uses artificial intelligence to develop M3GAN, a life-like doll programmed to emotionally bond with her newly orphaned niece. But when the doll’s programming works too well, she becomes overprotective of her new friend with terrifying results.', '167505408880.mp4', '167505408880.jpg', '', '2025-12-27 03:08:21', '2023-01-30 04:48:12', NULL, 1, 0, 0, 0, 0),
+(15, 'Hello World (2019)', 9.3, 2019, NULL, '98 Min', 0, 'A shy high schooler in Kyoto meets a man claiming to be his future self, who tells him he’s hacked into the past to save their first love.', '167508325269.mp4', '167508325269.jpg', '', '2023-01-30 13:01:35', '2023-01-30 12:54:13', NULL, 2, 0, 0, 0, 0),
+(16, 'The Last of Us (2023)', 9.5, 2023, NULL, '60 Min', 18, 'Twenty years after modern civilization has been destroyed. Joel, a hardened survivor, is hired to smuggle Ellie, a 14-year-old girl, out of an oppressive quarantine zone. What starts as a small job soon becomes a brutal, heartbreaking journey, as they both must traverse the U.S. and depend on each other for survival.', '167512810628.mp4', '167512810628.jpg', '', NULL, '2023-01-31 01:21:47', NULL, 1, 0, 0, 0, 0),
+(17, 'Vikings: Valhalla (2022)', 9.3, 2022, NULL, '51 Min', 13, 'In this sequel to “Vikings,” a hundred years have passed and a new generation of legendary heroes arises to forge its own destiny — and make history.', '167512956769.mp4', '167512956769.jpg', '', '2023-01-31 10:38:32', '2023-01-31 01:46:08', NULL, 1, 0, 0, 0, 0),
+(18, 'The Old Way (2023)', 8.6, 2025, NULL, '95 Min', 18, 'An old gunslinger and his daughter must face the consequences of his past, when the son of a man he murdered years ago arrives to take his revenge.', '167515286337.mp4', '167515286337.jpg', '', '2025-12-27 03:07:45', '2023-01-31 08:14:24', NULL, 1, 0, 0, 0, 0),
+(19, 'Hidayah', 8.3, 2023, NULL, '92 Min', 13, 'Di tengah imannya yang tengah goyah, BAHRI (Ajil Ditto), seorang ustadz muda, berusaha mengubur masa lalunya dengan bekerja di kota. Hingga suatu ketika, sahabat Bahri, HASAN, datang dari kampung untuk meminta tolong. Desa Mekarwangi tempat Bahri tumbuh dan berasal, mengalami gangguan gaib yang mengusik kedamaian kampung, yang dipercaya disebabkan oleh RATNA (Givina), teman lama Bahri. Ratna sakit keras dan menderita, namun tak kunjung menemui ajal. Teriakan kesakitan Ratna menghantui kampung tiap malam, disertai kemunculan sosok gaib yang mengganggu warga. Bahri kembali ke Desa Mekarwangi, dan mendapati bahwa bahaya yang harus ia hadapi lebih besar dari yang ia duga. Bahkan sesudah Ratna wafat, gangguan gaib malah semakin parah, hingga merenggut nyawa warga kampung. Bahri dituding bertanggung jawab atas itu semua, dan masa lalu Bahri sebagai narapidana terbongkar, membuat warga Mekarwangi mengusirnya. Demi menyelamatkan diri dan kampungnya, Bahri tidak punya pilihan selain meraih kembali hidayah dan memperteguh imannya.', NULL, '167515577368.jpg', '', '2023-01-31 09:15:48', '2023-01-31 09:02:54', NULL, 4, 1, 0, 0, 0),
+(20, 'Transfusion (2023)', 8.9, 2023, NULL, '105 Min', 18, 'A former Special Forces operative thrust into the criminal underworld to keep his only son from being taken away from him.', '167516108225.mp4', '167516108225.jpg', '', '2023-01-31 11:06:51', '2023-01-31 10:31:22', NULL, 3, 0, 0, 0, 0),
+(21, 'Kokdu: Season of Deity (2023)', 9.5, 2023, NULL, '80 Min', 18, 'A fantasy medical drama about a high-ranking grim reaper named Kkok Du, who is the only being to exist in the underworld. Every 99 years, the cold and cruel Kkok Du must take a break from his job in the underworld and spend 49 days in the mortal realm—and this time, he winds up inhabiting the body of the human Do Jin Woo. While living as Do Jin Woo, he meets Han Gye Jeol, a female doctor who has the mysterious ability to order Kkok Du around.', NULL, '167516298056.jpg', '', '2023-01-31 11:07:20', '2023-01-31 11:03:01', NULL, 4, 0, 1, 0, 0),
+(22, 'The Bait (2023)', 7.7, 2023, NULL, '80 Min', 18, 'A story that digs into the truth of past unsolved cases through the heinous current events. It is predicting the birth of a more realistic and new crime thriller based on a rare event.', '167521482854.mp4', '167521513702.jpg', '', '2023-02-01 01:32:17', '2023-02-01 01:27:08', NULL, 0, 0, 1, 0, 0),
+(23, 'The Bride of Habaek (2017)', 1, 2017, NULL, '80 Min', 18, 'Yoon So Ah is a pragmatic neuropsychiatrist who carries a tremendous financial burden to run her own practice. Her family has been tasked with serving Ha Baek, a reincarnated water god, for many generations, and So Ah is forced to do the same. Ha Baek starts to develop feelings for So Ah, but he has competition for her heart from Hoo Ye, the CEO of a resort company, who clashes with So Ah over a piece of land but then falls in love with her. Can a relationship between a mortal female and a god have a future?', NULL, '167521509950.jpg', '', '2023-02-01 01:37:28', '2023-02-01 01:31:39', NULL, 3, 0, 1, 0, 0),
+(24, 'Délocalisés', 9, 2025, NULL, '86 Min', 18, 'A mattress factory worker who is relocated to India convinces his French girlfriend to move with him.', NULL, '176680391796.jpg', '', NULL, '2025-12-27 02:51:58', NULL, 1, 0, 0, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -425,7 +430,7 @@ CREATE TABLE `movie_categories` (
   `id` int(11) NOT NULL,
   `movie_id` int(11) NOT NULL,
   `category_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci ROW_FORMAT=COMPACT;
 
 --
 -- Dumping data for table `movie_categories`
@@ -436,11 +441,6 @@ INSERT INTO `movie_categories` (`id`, `movie_id`, `category_id`) VALUES
 (29, 10, 1),
 (35, 6, 1),
 (36, 6, 3),
-(37, 8, 1),
-(43, 7, 1),
-(44, 7, 26),
-(45, 14, 6),
-(46, 14, 13),
 (50, 15, 21),
 (51, 15, 27),
 (52, 15, 28),
@@ -454,10 +454,7 @@ INSERT INTO `movie_categories` (`id`, `movie_id`, `category_id`) VALUES
 (65, 12, 26),
 (66, 13, 25),
 (67, 11, 1),
-(68, 18, 1),
-(69, 18, 24),
 (73, 19, 13),
-(74, 9, 1),
 (78, 17, 1),
 (79, 17, 4),
 (80, 17, 15),
@@ -470,7 +467,16 @@ INSERT INTO `movie_categories` (`id`, `movie_id`, `category_id`) VALUES
 (103, 23, 31),
 (104, 22, 7),
 (105, 22, 29),
-(106, 21, 29);
+(106, 21, 29),
+(107, 24, 6),
+(108, 18, 1),
+(109, 18, 24),
+(110, 7, 1),
+(111, 7, 26),
+(112, 8, 1),
+(113, 9, 1),
+(114, 14, 6),
+(115, 14, 13);
 
 -- --------------------------------------------------------
 
@@ -486,7 +492,7 @@ CREATE TABLE `reviews` (
   `created_at` timestamp NULL DEFAULT current_timestamp(),
   `rating` int(11) DEFAULT NULL,
   `movie_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci ROW_FORMAT=COMPACT;
 
 --
 -- Dumping data for table `reviews`
@@ -510,7 +516,7 @@ CREATE TABLE `sys_codes` (
   `srn_year` int(11) DEFAULT NULL,
   `srn_month` int(11) DEFAULT NULL,
   `srn_reset_by` varchar(20) DEFAULT 'NONE'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci ROW_FORMAT=COMPACT;
 
 --
 -- Dumping data for table `sys_codes`
@@ -528,6 +534,19 @@ INSERT INTO `sys_codes` (`srn_id`, `srn_code`, `srn_value`, `srn_length`, `srn_f
 (17, '077.1', 1, 1, '{VALUE}', NULL, NULL, 'NONE'),
 (18, '999.99', 38, 1, '{VALUE}', NULL, NULL, 'NONE'),
 (19, '999.99', 38, 1, '{VALUE}', 2019, NULL, 'NONE');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `user_bookmarks`
+--
+
+CREATE TABLE `user_bookmarks` (
+  `id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `movie_id` int(11) NOT NULL,
+  `created_at` datetime DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Indexes for dumped tables
@@ -619,6 +638,12 @@ ALTER TABLE `sys_codes`
   ADD PRIMARY KEY (`srn_id`) USING BTREE;
 
 --
+-- Indexes for table `user_bookmarks`
+--
+ALTER TABLE `user_bookmarks`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -638,7 +663,7 @@ ALTER TABLE `alus_gd`
 -- AUTO_INCREMENT for table `alus_la`
 --
 ALTER TABLE `alus_la`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `alus_mg`
@@ -674,19 +699,19 @@ ALTER TABLE `categories`
 -- AUTO_INCREMENT for table `comments`
 --
 ALTER TABLE `comments`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `movies`
 --
 ALTER TABLE `movies`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT for table `movie_categories`
 --
 ALTER TABLE `movie_categories`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=107;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=116;
 
 --
 -- AUTO_INCREMENT for table `reviews`
@@ -699,6 +724,12 @@ ALTER TABLE `reviews`
 --
 ALTER TABLE `sys_codes`
   MODIFY `srn_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+
+--
+-- AUTO_INCREMENT for table `user_bookmarks`
+--
+ALTER TABLE `user_bookmarks`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- Constraints for dumped tables

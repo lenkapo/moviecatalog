@@ -142,6 +142,9 @@
 											width="250" height="400">
 									</a>
 								</div>
+								<div class="hvr-inner">
+
+								</div>
 								<div class="title-in">
 									<div class="cate">
 										<span class="blue">

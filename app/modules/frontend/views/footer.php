@@ -3,10 +3,10 @@
 		<div class="container">
 			<div class="flex-parent-ft">
 				<div class="flex-child-ft item1">
-					<a href="index.html"><img class="logo" src="images/logo1.png" alt=""></a>
-					<p>5th Avenue st, manhattan<br>
-						New York, NY 10001</p>
-					<p>Call us: <a href="#">(+01) 202 342 6789</a></p>
+					<a href="index.html"><img class="logo" src="<?= base_url('assets/images/logo-update2.png') ?>" alt="" width="250" height="100"></a>
+					<!-- <p>5th Avenue st, manhattan<br>
+						New York, NY 10001</p> -->
+					<!-- <p>Call us: <a href="#" style="font-size: 14px;">(+62) 856 9736 2948</a></p> -->
 				</div>
 				<div class="flex-child-ft item2">
 					<h4>Resources</h4>
